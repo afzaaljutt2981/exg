@@ -1,3 +1,4 @@
+import 'package:exg/Ui/home/view/home_view.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_colors.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
@@ -18,7 +19,6 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
-    var shortestSide = MediaQuery.of(context).size.shortestSide;
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
@@ -71,25 +71,35 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             CustomSizeBox(30.h),
-            text("Log in"),
+            text("Log in", onTap: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeView()),
+                  (route) => false);
+            }),
             CustomSizeBox(10.h),
-            text("Sign Up"),
+            text("Sign Up", onTap: () {}),
           ],
         ),
       ),
     );
   }
 
-  Widget text(String text) {
+  Widget text(String text, {required Function onTap}) {
     return Padding(
       padding: EdgeInsets.only(left: 40.w),
-      child: Text(
-        text,
-        textAlign: TextAlign.start,
-        style: AppTextStyle.ralewayFont(
-            fontSize: 15.sp,
-            fontWeight: FontWeight.normal,
-            color: AppColors.blueColor),
+      child: GestureDetector(
+        onTap: () {
+          onTap();
+        },
+        child: Text(
+          text,
+          textAlign: TextAlign.start,
+          style: AppTextStyle.ralewayFont(
+              fontSize: 15.sp,
+              fontWeight: FontWeight.normal,
+              color: AppColors.blueColor),
+        ),
       ),
     );
   }
