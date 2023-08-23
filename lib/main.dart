@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'Ui/splash_screen/view/splash_view.dart';
 
-void main() {
+Future<void> main() async  {
+  // await SystemChrome.setPreferredOrientations(
+  //   [DeviceOrientation.portraitUp],
+  // );
   runApp(const MyApp());
+ 
 }
 
 class MyApp extends StatelessWidget {

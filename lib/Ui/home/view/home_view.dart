@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../global/helper/custom_sized_box.dart';
@@ -71,6 +69,17 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             Center(child: text("the ground up", AppColors.blueColor)),
+            Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 50.w),
+                child: const Image(
+                  image: AssetImage('assets/images/character_heads.png'),
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            CustomSizeBox(15.h)
           ],
         ),
       ),
