@@ -1,3 +1,4 @@
+import 'package:exg/global/extras/download_file.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -165,7 +166,20 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                     CustomSizeBox(30.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [documents("Paper"), documents("Answers")],
+                      children: [
+                        documents("Paper", onTap: () {
+                          downloadDocument(
+                              'assets/Docs/beginner/block_exam_PDD.pdf',
+                              'EXG Beginner Question Paper.pdf'
+                              );
+                        }),
+                        documents("Answers", onTap: () {
+                          downloadDocument(
+                              'assets/Docs/beginner/block_exam_answers.pdf',
+                              'EXG Beginner Answer Paper.pdf'
+                              );
+                        })
+                      ],
                     ),
                     CustomSizeBox(55.h),
                   ],
@@ -176,7 +190,7 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
         ));
   }
 
-  Widget documents(String text) {
+  Widget documents(String text, {required Function onTap}) {
     return Column(
       children: [
         Text(
@@ -187,9 +201,14 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
               fontWeight: FontWeight.normal),
         ),
         CustomSizeBox(10.h),
-        Image(
-          image: const AssetImage('assets/images/document_picture.png'),
-          height: 85.sp,
+        InkWell(
+          onTap: () {
+            onTap();
+          },
+          child: Image(
+            image: const AssetImage('assets/images/document_picture.png'),
+            height: 85.sp,
+          ),
         ),
       ],
     );
