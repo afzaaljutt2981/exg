@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../global/utils/app_colors.dart';
 import '../../../global/utils/app_text_styles.dart';
 import '../../drawer/view/drawer_view.dart';
+import '../../video_play_screens/view/video_play.dart';
 
 class BeginnerScreen extends StatefulWidget {
   const BeginnerScreen({super.key});
@@ -170,14 +171,12 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                         documents("Paper", onTap: () {
                           downloadDocument(
                               'assets/Docs/beginner/block_exam_PDD.pdf',
-                              'EXG Beginner Question Paper.pdf'
-                              );
+                              'EXG Beginner Question Paper.pdf');
                         }),
                         documents("Answers", onTap: () {
                           downloadDocument(
                               'assets/Docs/beginner/block_exam_answers.pdf',
-                              'EXG Beginner Answer Paper.pdf'
-                              );
+                              'EXG Beginner Answer Paper.pdf');
                         })
                       ],
                     ),
@@ -225,39 +224,45 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
 
   Widget lessons(
       String image, String lessonText, String subHeading, String detail) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Image(
-          image: AssetImage(image),
-          height: 100.sp,
-        ),
-        Text(
-          lessonText,
-          style: AppTextStyle.markerFont(
-              color: AppColors.blueColor,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.normal),
-        ),
-        Text(
-          subHeading,
-          style: AppTextStyle.markerFont(
-              color: AppColors.redColor,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.normal),
-        ),
-        SizedBox(
-          width: 100.w,
-          child: Text(
-            detail,
-            style: AppTextStyle.markerFont(
-                color: Colors.grey,
-                fontSize: 8.sp,
-                fontWeight: FontWeight.normal),
-            textAlign: TextAlign.center,
+    return InkWell(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) =>  VideoPlayScreen(lessonText: subHeading,  url: 'https://drive.google.com/drive/u/0/folders/1c6lhjsIgVo5P5a6jCad-CgnLlNNySD_n',)));
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image(
+            image: AssetImage(image),
+            height: 100.sp,
           ),
-        ),
-      ],
+          Text(
+            lessonText,
+            style: AppTextStyle.markerFont(
+                color: AppColors.blueColor,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.normal),
+          ),
+          Text(
+            subHeading,
+            style: AppTextStyle.markerFont(
+                color: AppColors.redColor,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.normal),
+          ),
+          SizedBox(
+            width: 100.w,
+            child: Text(
+              detail,
+              style: AppTextStyle.markerFont(
+                  color: Colors.grey,
+                  fontSize: 8.sp,
+                  fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
