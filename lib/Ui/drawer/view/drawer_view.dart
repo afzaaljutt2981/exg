@@ -1,3 +1,5 @@
+import 'package:exg/Ui/beginners_tutorials/view/beginners_screen.dart';
+import 'package:exg/Ui/home/view/home_view.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_colors.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
@@ -48,21 +50,36 @@ class _MyDrawerState extends State<MyDrawer> {
               // CustomSizeBox(20.h),
               Padding(
                 padding: EdgeInsets.only(left: 35.w, top: 20.h),
-                child: Text(
-                  "Home",
-                  style: AppTextStyle.ralewayFont(
-                      fontSize: 18.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeView()),
+                        (route) => false);
+                  },
+                  child: Text(
+                    "Home",
+                    style: AppTextStyle.ralewayFont(
+                        fontSize: 18.sp,
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal),
+                  ),
                 ),
               ),
               heading("Tutorials"),
-              tutorialsPlans("Beginner"),
-              tutorialsPlans("Intermediate"),
-              tutorialsPlans("Advanced"),
+              tutorialsPlans("Beginner", onTap: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BeginnerScreen()),
+                    (route) => false);
+              }),
+              tutorialsPlans("Intermediate", onTap: () {}),
+              tutorialsPlans("Advanced", onTap: () {}),
               heading("ECG Library"),
-              tutorialsPlans("Rhythm Strips"),
-              tutorialsPlans("12 Lead ECGs"),
+              tutorialsPlans("Rhythm Strips", onTap: () {}),
+              tutorialsPlans("12 Lead ECGs", onTap: () {}),
             ],
           )),
     );
@@ -79,15 +96,20 @@ class _MyDrawerState extends State<MyDrawer> {
     );
   }
 
-  Widget tutorialsPlans(String text) {
+  Widget tutorialsPlans(String text, {required Function onTap}) {
     return Padding(
       padding: EdgeInsets.only(left: 60.w, top: 15.h),
-      child: Text(
-        text,
-        style: AppTextStyle.ralewayFont(
-            fontSize: 20.sp,
-            color: Colors.white,
-            fontWeight: FontWeight.normal),
+      child: GestureDetector(
+        onTap: () {
+          onTap();
+        },
+        child: Text(
+          text,
+          style: AppTextStyle.ralewayFont(
+              fontSize: 20.sp,
+              color: Colors.white,
+              fontWeight: FontWeight.normal),
+        ),
       ),
     );
   }
