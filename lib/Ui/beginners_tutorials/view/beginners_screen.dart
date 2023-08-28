@@ -105,7 +105,7 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                             'assets/images/beginners/beginner_lesson_1.png',
                             "Lesson 1.",
                             "Anatomy",
-                            "Learn about the anotmy of the heart and cardic condunting syster"),
+                            "Learn about the anatomy of the heart and the cardiac conducting system"),
                         lessons(
                             'assets/images/beginners/beginner_lesson_2.png',
                             "Lesson 2.",
