@@ -36,6 +36,9 @@ dependencies:
   flick_video_player: ^0.5.0
   video_player: ^2.7.0
   csslib: 0.17.0
+  url_launcher: ^6.1.6
+  http: ^0.13.5
+  rename: ^2.1.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -68,7 +71,11 @@ flutter:
   assets:
     - assets/images/
     - assets/images/beginners/
-    - assets/Docs/beginner/
+    - assets/images/intermediate/
+    - assets/images/advanced/
+    - assets/docs/beginner/
+    - assets/docs/intermediate/
+    - assets/docs/advance/
 
 
 

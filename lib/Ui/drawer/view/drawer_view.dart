@@ -1,10 +1,14 @@
 import 'package:exg/Ui/beginners_tutorials/view/beginners_screen.dart';
 import 'package:exg/Ui/home/view/home_view.dart';
+import 'package:exg/Ui/intermediate_tutorials/view/intermediate_screen.dart';
+import 'package:exg/Ui/pricing_plan/view/plan_view.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_colors.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../advance_tutorial/view/advance_screen.dart';
 
 class MyDrawer extends StatefulWidget {
   @override
@@ -69,14 +73,25 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
               heading("Tutorials"),
               tutorialsPlans("Beginner", onTap: () {
-                Navigator.pushAndRemoveUntil(
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BeginnerScreen()),
+                );
+              }),
+              tutorialsPlans("Intermediate", onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const IntermediateScreen()),
+                );
+              }),
+              tutorialsPlans("Advanced", onTap: () {
+                Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const BeginnerScreen()),
-                    (route) => false);
+                        builder: (context) => const AdvanceScreen()));
               }),
-              tutorialsPlans("Intermediate", onTap: () {}),
-              tutorialsPlans("Advanced", onTap: () {}),
               heading("ECG Library"),
               tutorialsPlans("Rhythm Strips", onTap: () {}),
               tutorialsPlans("12 Lead ECGs", onTap: () {}),

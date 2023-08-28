@@ -22,6 +22,7 @@ class AppTextStyle {
     FontWeight? fontWeight,
     Color? color,
     double? height,
+    
   }) {
     return TextStyle(
       fontFamily: 'MarkerFeltNarrow',

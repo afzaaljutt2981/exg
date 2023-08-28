@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../drawer/view/drawer_view.dart';
+import 'login_screen.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

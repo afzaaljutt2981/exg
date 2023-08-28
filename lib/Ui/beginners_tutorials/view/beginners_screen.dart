@@ -104,7 +104,7 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                         lessons(
                             'assets/images/beginners/beginner_lesson_1.png',
                             "Lesson 1.",
-                            "Anotmy",
+                            "Anatomy",
                             "Learn about the anotmy of the heart and cardic condunting syster"),
                         lessons(
                             'assets/images/beginners/beginner_lesson_2.png',
@@ -140,7 +140,7 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                             "Learn our six step approach to rhythm analysis as used by the UK resuscitation council"),
                       ],
                     ),
-                    CustomSizeBox(55.h),
+                    CustomSizeBox(65.h),
                     Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -164,7 +164,7 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                         ),
                       ),
                     ),
-                    CustomSizeBox(30.h),
+                    CustomSizeBox(45.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -196,17 +196,17 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
           text,
           style: AppTextStyle.markerFont(
               color: AppColors.blueColor,
-              fontSize: 18.sp,
+              fontSize: 16.sp,
               fontWeight: FontWeight.normal),
         ),
         CustomSizeBox(10.h),
-        InkWell(
+        GestureDetector(
           onTap: () {
             onTap();
           },
           child: Image(
             image: const AssetImage('assets/images/document_picture.png'),
-            height: 85.sp,
+            height: 75.sp,
           ),
         ),
       ],
@@ -226,8 +226,14 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
       String image, String lessonText, String subHeading, String detail) {
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) =>  VideoPlayScreen(lessonText: subHeading,  url: 'https://drive.google.com/drive/u/0/folders/1c6lhjsIgVo5P5a6jCad-CgnLlNNySD_n',)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => VideoPlayScreen(
+                      lessonText: subHeading,
+                      url:
+                          'https://drive.google.com/drive/u/0/folders/1c6lhjsIgVo5P5a6jCad-CgnLlNNySD_n',
+                    )));
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

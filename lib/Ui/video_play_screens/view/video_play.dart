@@ -15,6 +15,7 @@ class VideoPlayScreen extends StatefulWidget {
   @override
   State<VideoPlayScreen> createState() => _VideoPlayScreenState();
 }
+//'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'
 
 Uri url = Uri.parse(
     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4');

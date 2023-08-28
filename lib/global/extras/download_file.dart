@@ -18,7 +18,3 @@ downloadDocument(String path, String name) async {
     throw Exception('Error parsing asset file!');
   }
 }
- //String path, String name
-
-//'assets/Docs/beginner/block_exam_PDD.pdf',
-                     //         'EXG Beginner Question Paper.pdf'
