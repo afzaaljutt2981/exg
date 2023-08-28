@@ -170,12 +170,12 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                       children: [
                         documents("Paper", onTap: () {
                           downloadDocument(
-                              'assets/Docs/beginner/block_exam_PDD.pdf',
+                              'assets/docs/beginner/block_exam_PDD.pdf',
                               'EXG Beginner Question Paper.pdf');
                         }),
                         documents("Answers", onTap: () {
                           downloadDocument(
-                              'assets/Docs/beginner/block_exam_answers.pdf',
+                              'assets/docs/beginner/block_exam_answers.pdf',
                               'EXG Beginner Answer Paper.pdf');
                         })
                       ],

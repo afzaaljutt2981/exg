@@ -190,12 +190,12 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                       children: [
                         documents("Paper", onTap: () {
                           downloadDocument(
-                              'assets/Docs/intermediate/Intermedate_block_exam_questions.pdf',
+                              'assets/docs/intermediate/Intermedate_block_exam_questions.pdf',
                               'EXG Intermediate Question Paper.pdf');
                         }),
                         documents("Answers", onTap: () {
                           downloadDocument(
-                              'assets/Docs/intermediate/Intermedate_block_exam_answers.pdf',
+                              'assets/docs/intermediate/Intermedate_block_exam_answers.pdf',
                               'EXG Intermediate Answer Paper.pdf');
                         })
                       ],
