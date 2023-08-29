@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../global/utils/app_colors.dart';
 import '../../../global/utils/app_text_styles.dart';
 import '../../drawer/view/drawer_view.dart';
+import '../../video_play_screens/view/two_videos_play.dart';
 import '../../video_play_screens/view/video_play.dart';
 
 class BeginnerScreen extends StatefulWidget {
@@ -119,12 +120,58 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        lessons(
-                            3,
-                            'assets/images/beginners/beginner_lesson_3.png',
-                            "Lesson 3.",
-                            "Basic ECG Waveforms",
-                            "Learn about the P-wave, QRS complex and T-wave,"),
+                        GestureDetector(
+                          onTap: () {
+                            var videoList = [];
+                            videoList.add(
+                                "https://video.wixstatic.com/video/c851b6_21e1f85ea9a046a68d25eb5511dd89fa/1080p/mp4/file.mp4");
+                            videoList.add("https://video.wixstatic.com/video/c851b6_ce8814e7b7634f6790a293b162366a58/1080p/mp4/file.mp4");
+
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TwoVideoPlayScreen(
+                                          lessonText: 'Basic ECG Waveforms',
+                                          url: videoList,
+                                        )));
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image(
+                                image: const AssetImage(
+                                  'assets/images/beginners/beginner_lesson_3.png',
+                                ),
+                                height: 100.sp,
+                              ),
+                              Text(
+                                'Lesson 3.',
+                                style: AppTextStyle.markerFont(
+                                    color: AppColors.blueColor,
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Text(
+                                "Basic ECG Waveforms",
+                                style: AppTextStyle.markerFont(
+                                    color: AppColors.redColor,
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              SizedBox(
+                                width: 100.w,
+                                child: Text(
+                                  "Learn about the P-wave, QRS complex and T-wave,",
+                                  style: AppTextStyle.markerFont(
+                                      color: Colors.grey,
+                                      fontSize: 8.sp,
+                                      fontWeight: FontWeight.normal),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         lessons(
                             4,
                             'assets/images/beginners/beginner_lesson_4.png',
@@ -233,18 +280,23 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
       onTap: () {
         String url = videoType == 1
             ? 'https://video.wixstatic.com/video/c851b6_9cae6b24e98a498a8acfc21e0f6338b1/1080p/mp4/file.mp4'
-            : videoType == 2 ? "https://video.wixstatic.com/video/c851b6_4b97374228584b8aa8ed0bc95cda4d34/1080p/mp4/file.mp4" :
-              videoType == 3 ? "https://video.wixstatic.com/video/c851b6_21e1f85ea9a046a68d25eb5511dd89fa/1080p/mp4/file.mp4"
-              : videoType == 4 ? "https://video.wixstatic.com/video/c851b6_0ad193718bfe47699ebe35b3b24a5b34/1080p/mp4/file.mp4"
-              :videoType == 5? 'https://video.wixstatic.com/video/c851b6_6e139b10c35846f98610c531c00924ff/1080p/mp4/file.mp4' : '';
+            : videoType == 2
+                ? "https://video.wixstatic.com/video/c851b6_4b97374228584b8aa8ed0bc95cda4d34/1080p/mp4/file.mp4"
+                :
+                //   videoType == 3 ? "https://video.wixstatic.com/video/c851b6_21e1f85ea9a046a68d25eb5511dd89fa/1080p/mp4/file.mp4"
+                //  :
+                videoType == 4
+                    ? "https://video.wixstatic.com/video/c851b6_0ad193718bfe47699ebe35b3b24a5b34/1080p/mp4/file.mp4"
+                    : videoType == 5
+                        ? 'https://video.wixstatic.com/video/c851b6_6e139b10c35846f98610c531c00924ff/1080p/mp4/file.mp4'
+                        : '';
 
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => VideoPlayScreen(
                       lessonText: subHeading,
-                      url:
-                          url,
+                      url: url,
                     )));
       },
       child: Column(

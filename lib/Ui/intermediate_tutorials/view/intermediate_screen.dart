@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../global/utils/app_colors.dart';
 import '../../../global/utils/app_text_styles.dart';
 import '../../drawer/view/drawer_view.dart';
+import '../../video_play_screens/view/four_videos_play.dart';
 import '../../video_play_screens/view/video_play.dart';
 
 class IntermediateScreen extends StatefulWidget {
@@ -112,12 +113,59 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                         "Lesson 1.",
                         "Cardiac Axis",
                         "Cardiac axis is the general direction of electrical activity within the heart"),
-                    lessons(
-                        2,
-                        'assets/images/intermediate/12345.png',
-                        "Lesson 2.",
-                        "myocardial infarctions",
-                        "Learn how to diagnose, localise and age a myocardial infarction"),
+                    GestureDetector(
+                      onTap: () {
+                        var videoList = [];
+                        videoList.add(
+                            'https://video.wixstatic.com/video/c851b6_c7202b0b62f146e8947cd064d431da79/1080p/mp4/file.mp4');
+                        videoList.add('https://video.wixstatic.com/video/c851b6_e3de63b50f8b465cb5565e965394cb7d/1080p/mp4/file.mp4');
+                         videoList.add('https://video.wixstatic.com/video/c851b6_ddc21acaf55847f982512e57cf0d041a/1080p/mp4/file.mp4');
+                          videoList.add('https://video.wixstatic.com/video/c851b6_3e894bd4b8464a1da44339b7c152bfae/1080p/mp4/file.mp4');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FourVideoPlayScreen(
+                                      lessonText: 'myocardial infarctions',
+                                      url: videoList,
+                                    )));
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Lesson 2.',
+                            style: AppTextStyle.markerFont(
+                                color: AppColors.blueColor,
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.normal),
+                          ),
+                          Text(
+                            'myocardial infarctions',
+                            style: AppTextStyle.markerFont(
+                                color: AppColors.redColor,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.normal),
+                          ),
+                          CustomSizeBox(15.h),
+                          Image(
+                            image: const AssetImage(
+                                'assets/images/intermediate/12345.png'),
+                            height: 100.sp,
+                          ),
+                          SizedBox(
+                            width: 100.w,
+                            child: Text(
+                              'Learn how to diagnose, localise and age a myocardial infarction',
+                              style: AppTextStyle.markerFont(
+                                  color: Colors.grey,
+                                  fontSize: 8.sp,
+                                  fontWeight: FontWeight.normal),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -262,15 +310,15 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
       onTap: () {
         String url = videoNumber == 1
             ? "https://video.wixstatic.com/video/c851b6_0a3af45f65cb46f89cf3e38cb5eb8f67/1080p/mp4/file.mp4"
-            : videoNumber == 2
-                ? "https://video.wixstatic.com/video/c851b6_c7202b0b62f146e8947cd064d431da79/1080p/mp4/file.mp4"
-                : videoNumber == 3
-                    ? "https://video.wixstatic.com/video/c851b6_8d22d6f733eb4d2ab1ac052c0b110f91/1080p/mp4/file.mp4"
-                    : videoNumber == 4
-                        ? "https://video.wixstatic.com/video/c851b6_5b68a8705d804e09a4e9f59d0b0186fd/1080p/mp4/file.mp4"
-                        : videoNumber == 5
-                            ? "https://video.wixstatic.com/video/c851b6_bcef90a9cfef42cbbedfb8036513810a/1080p/mp4/file.mp4"
-                            : '';
+            //  : videoNumber == 2
+            //    ? "https://video.wixstatic.com/video/c851b6_c7202b0b62f146e8947cd064d431da79/1080p/mp4/file.mp4"
+            : videoNumber == 3
+                ? "https://video.wixstatic.com/video/c851b6_8d22d6f733eb4d2ab1ac052c0b110f91/1080p/mp4/file.mp4"
+                : videoNumber == 4
+                    ? "https://video.wixstatic.com/video/c851b6_5b68a8705d804e09a4e9f59d0b0186fd/1080p/mp4/file.mp4"
+                    : videoNumber == 5
+                        ? "https://video.wixstatic.com/video/c851b6_bcef90a9cfef42cbbedfb8036513810a/1080p/mp4/file.mp4"
+                        : '';
         Navigator.push(
             context,
             MaterialPageRoute(

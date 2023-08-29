@@ -22,8 +22,7 @@ class _VideoPlayScreenState extends State<VideoPlayScreen> {
     super.initState();
     Uri url = Uri.parse(widget.url);
     flickManager = FlickManager(
-        videoPlayerController: VideoPlayerController.networkUrl(url)
-    );
+        videoPlayerController: VideoPlayerController.networkUrl(url));
   }
 
   FlickManager? flickManager;
@@ -35,7 +34,6 @@ class _VideoPlayScreenState extends State<VideoPlayScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors.blueColor,
       appBar: AppBar(
@@ -86,7 +84,18 @@ class _VideoPlayScreenState extends State<VideoPlayScreen> {
           CustomSizeBox(20.h),
           AspectRatio(
             aspectRatio: 16 / 9,
-            child: FlickVideoPlayer(flickManager: flickManager!),
+            child: FlickVideoPlayer(
+                flickVideoWithControls: FlickVideoWithControls(
+                  controls: FlickPortraitControls(
+                    progressBarSettings: FlickProgressBarSettings(
+                      bufferedColor: Colors.black12,
+                      handleColor: Colors.black,
+                      playedColor: AppColors.blueColor,
+                      backgroundColor: const Color.fromARGB(51, 22, 44, 33),
+                    ),
+                  ),
+                ),
+                flickManager: flickManager!),
           )
         ],
       ),
