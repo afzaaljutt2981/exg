@@ -15,17 +15,27 @@ class VideoPlayScreen extends StatefulWidget {
   @override
   State<VideoPlayScreen> createState() => _VideoPlayScreenState();
 }
-//'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'
-
-Uri url = Uri.parse(
-    'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4');
-
-FlickManager flickManager =
-    FlickManager(videoPlayerController: VideoPlayerController.networkUrl(url));
 
 class _VideoPlayScreenState extends State<VideoPlayScreen> {
   @override
+  void initState() {
+    super.initState();
+    Uri url = Uri.parse(widget.url);
+    flickManager = FlickManager(
+        videoPlayerController: VideoPlayerController.networkUrl(url)
+    );
+  }
+
+  FlickManager? flickManager;
+  @override
+  void dispose() {
+    flickManager!.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: AppColors.blueColor,
       appBar: AppBar(
@@ -76,7 +86,7 @@ class _VideoPlayScreenState extends State<VideoPlayScreen> {
           CustomSizeBox(20.h),
           AspectRatio(
             aspectRatio: 16 / 9,
-            child: FlickVideoPlayer(flickManager: flickManager),
+            child: FlickVideoPlayer(flickManager: flickManager!),
           )
         ],
       ),

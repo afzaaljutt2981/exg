@@ -107,11 +107,13 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     lessons(
+                        1,
                         'assets/images/intermediate/intermediate_lesson_1.gif',
                         "Lesson 1.",
                         "Cardiac Axis",
                         "Cardiac axis is the general direction of electrical activity within the heart"),
                     lessons(
+                        2,
                         'assets/images/intermediate/12345.png',
                         "Lesson 2.",
                         "myocardial infarctions",
@@ -126,11 +128,13 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     lessons(
+                        3,
                         'assets/images/intermediate/3.png',
                         "Lesson 3.",
                         "Pericarditis and Effusion",
                         "Learn about how inflammation of the pericardium affects the ECG"),
                     lessons(
+                        4,
                         'assets/images/intermediate/4.png',
                         "Lesson 4.",
                         "Cardiac Hypertrophy",
@@ -145,6 +149,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     lessons(
+                        5,
                         'assets/images/intermediate/intermediate_lesson_5.gif',
                         "Lesson 5.",
                         "Bundle Branch Blocks",
@@ -251,17 +256,27 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
     );
   }
 
-  Widget lessons(
-      String image, String lessonText, String subHeading, String detail) {
-    return InkWell(
+  Widget lessons(int videoNumber, String image, String lessonText,
+      String subHeading, String detail) {
+    return GestureDetector(
       onTap: () {
+        String url = videoNumber == 1
+            ? "https://video.wixstatic.com/video/c851b6_0a3af45f65cb46f89cf3e38cb5eb8f67/1080p/mp4/file.mp4"
+            : videoNumber == 2
+                ? "https://video.wixstatic.com/video/c851b6_c7202b0b62f146e8947cd064d431da79/1080p/mp4/file.mp4"
+                : videoNumber == 3
+                    ? "https://video.wixstatic.com/video/c851b6_8d22d6f733eb4d2ab1ac052c0b110f91/1080p/mp4/file.mp4"
+                    : videoNumber == 4
+                        ? "https://video.wixstatic.com/video/c851b6_5b68a8705d804e09a4e9f59d0b0186fd/1080p/mp4/file.mp4"
+                        : videoNumber == 5
+                            ? "https://video.wixstatic.com/video/c851b6_bcef90a9cfef42cbbedfb8036513810a/1080p/mp4/file.mp4"
+                            : '';
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => VideoPlayScreen(
                       lessonText: subHeading,
-                      url:
-                          'https://drive.google.com/drive/u/0/folders/1c6lhjsIgVo5P5a6jCad-CgnLlNNySD_n',
+                      url: url,
                     )));
       },
       child: Column(

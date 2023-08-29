@@ -100,12 +100,12 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        lessons(
+                        lessons(1,
                             'assets/images/advanced/1.png',
                             "Lesson 1.",
                             "Atrial Arrhythmias",
                             "This section covers regular and irregular narrow complex tachycardias"),
-                        lessons(
+                        lessons(2,
                             'assets/images/advanced/2.png',
                             "Lesson 2.",
                             "Ventricular Arrhythmias",
@@ -116,12 +116,12 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        lessons(
+                        lessons(3,
                             'assets/images/advanced/3.png',
                             "Lesson 3.",
                             "Heart Blocks",
                             "Learn how to differentiate 1st, 2nd and 3rd degree heart blocks"),
-                        lessons(
+                        lessons(4,
                             'assets/images/advanced/4.png',
                             "Lesson 4.",
                             "Metabolic Derrangement",
@@ -231,17 +231,21 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
     );
   }
 
-  Widget lessons(
+  Widget lessons( int videoNumber, 
       String image, String lessonText, String subHeading, String detail) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
+        String url =  videoNumber == 1 ? "https://video.wixstatic.com/video/c851b6_2f3a4687669442e89665e01ff5f93a37/1080p/mp4/file.mp4 " : 
+        videoNumber == 2 ? "https://video.wixstatic.com/video/c851b6_4dbe37c07e474d5088d7f4c2e15c89c1/1080p/mp4/file.mp4":
+        videoNumber == 3 ? "https://video.wixstatic.com/video/c851b6_a38e9b1fb36f45b6ace280b63c2999d7/1080p/mp4/file.mp4" :
+        videoNumber == 4 ?   "https://video.wixstatic.com/video/c851b6_9efd381cd6764604a8118c55ded975ac/1080p/mp4/file.mp4" :'';
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => VideoPlayScreen(
                       lessonText: subHeading,
                       url:
-                          'https://drive.google.com/drive/u/0/folders/1c6lhjsIgVo5P5a6jCad-CgnLlNNySD_n',
+                          url,
                     )));
       },
       child: Column(
