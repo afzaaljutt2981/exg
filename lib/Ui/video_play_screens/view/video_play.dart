@@ -22,6 +22,7 @@ class _VideoPlayScreenState extends State<VideoPlayScreen> {
     super.initState();
     Uri url = Uri.parse(widget.url);
     flickManager = FlickManager(
+      autoPlay: true,
         videoPlayerController: VideoPlayerController.networkUrl(url));
   }
 

@@ -25,12 +25,16 @@ class _FourVideoPlayScreenState extends State<FourVideoPlayScreen> {
     Uri url3 = Uri.parse(widget.url[0]);
     Uri url4 = Uri.parse(widget.url[0]);
     flickManager1 = FlickManager(
+      autoPlay: true,
         videoPlayerController: VideoPlayerController.networkUrl(url1));
     flickManager2 = FlickManager(
+      autoPlay: false,
         videoPlayerController: VideoPlayerController.networkUrl(url2));
     flickManager3 = FlickManager(
+      autoPlay: false,
         videoPlayerController: VideoPlayerController.networkUrl(url3));
     flickManager4 = FlickManager(
+      autoPlay: false,
         videoPlayerController: VideoPlayerController.networkUrl(url4));
   }
 
@@ -164,7 +168,7 @@ class _FourVideoPlayScreenState extends State<FourVideoPlayScreen> {
                       ),
                     ),
                   ),
-                  flickManager: flickManager3!),
+                  flickManager: flickManager4!),
             ),
             CustomSizeBox(50.h),
           ],

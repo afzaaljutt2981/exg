@@ -8,41 +8,41 @@ import 'package:video_player/video_player.dart';
 import '../../../global/utils/app_text_styles.dart';
 
 // ignore: must_be_immutable
-class TwoVideoPlayScreen extends StatefulWidget {
-  TwoVideoPlayScreen(
-      {required this.lessonText,
-      required this.url,
-      required this.text,
-      super.key});
+class ThreeVideoPlayScreen extends StatefulWidget {
+  ThreeVideoPlayScreen(
+      {required this.lessonText, required this.url, super.key});
   String lessonText;
-  // ignore: prefer_typing_uninitialized_variables
   var url;
-  // ignore: prefer_typing_uninitialized_variables
-  var text;
   @override
-  State<TwoVideoPlayScreen> createState() => _TwoVideoPlayScreenState();
+  State<ThreeVideoPlayScreen> createState() => _ThreeVideoPlayScreenState();
 }
 
-class _TwoVideoPlayScreenState extends State<TwoVideoPlayScreen> {
+class _ThreeVideoPlayScreenState extends State<ThreeVideoPlayScreen> {
   @override
   void initState() {
     super.initState();
     Uri url1 = Uri.parse(widget.url[0]);
     Uri url2 = Uri.parse(widget.url[1]);
+    Uri url3 = Uri.parse(widget.url[0]);
     flickManager1 = FlickManager(
       autoPlay: true,
         videoPlayerController: VideoPlayerController.networkUrl(url1));
     flickManager2 = FlickManager(
       autoPlay: false,
         videoPlayerController: VideoPlayerController.networkUrl(url2));
+    flickManager3 = FlickManager(
+      autoPlay: false,
+        videoPlayerController: VideoPlayerController.networkUrl(url3));
   }
 
   FlickManager? flickManager1;
   FlickManager? flickManager2;
+  FlickManager? flickManager3;
   @override
   void dispose() {
     flickManager1!.dispose();
     flickManager2!.dispose();
+    flickManager3!.dispose();
     super.dispose();
   }
 
@@ -97,8 +97,8 @@ class _TwoVideoPlayScreenState extends State<TwoVideoPlayScreen> {
                 ),
               ),
             ),
-            CustomSizeBox(30.h),
-            text(widget.text[0]),
+            CustomSizeBox(20.h),
+            text('INarrow Complex Tachycardias Part 1.'),
             AspectRatio(
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
@@ -115,7 +115,7 @@ class _TwoVideoPlayScreenState extends State<TwoVideoPlayScreen> {
                   flickManager: flickManager1!),
             ),
             CustomSizeBox(50.h),
-            text(widget.text[1]),
+            text('Narrow Complex Tachycardias Part 2.'),
             AspectRatio(
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
@@ -130,7 +130,25 @@ class _TwoVideoPlayScreenState extends State<TwoVideoPlayScreen> {
                     ),
                   ),
                   flickManager: flickManager2!),
-            )
+            ),
+            CustomSizeBox(50.h),
+            text('Narrow Complex Tachycardias part 3.'),
+            AspectRatio(
+              aspectRatio: 16 / 9,
+              child: FlickVideoPlayer(
+                  flickVideoWithControls: FlickVideoWithControls(
+                    controls: FlickPortraitControls(
+                      progressBarSettings: FlickProgressBarSettings(
+                        bufferedColor: Colors.black12,
+                        handleColor: Colors.black,
+                        playedColor: AppColors.blueColor,
+                        backgroundColor: const Color.fromARGB(51, 22, 44, 33),
+                      ),
+                    ),
+                  ),
+                  flickManager: flickManager3!),
+            ),
+            CustomSizeBox(50.h),
           ],
         ),
       ),
@@ -139,7 +157,7 @@ class _TwoVideoPlayScreenState extends State<TwoVideoPlayScreen> {
 
   Widget text(String text) {
     return Padding(
-      padding: EdgeInsets.only(left: 15.w),
+      padding: EdgeInsets.only(left: 5.w, bottom: 3.h),
       child: Text(
         text,
         style: AppTextStyle.luloClean(color: Colors.white, fontSize: 9.sp),

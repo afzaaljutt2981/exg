@@ -126,13 +126,15 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                             videoList.add(
                                 "https://video.wixstatic.com/video/c851b6_21e1f85ea9a046a68d25eb5511dd89fa/1080p/mp4/file.mp4");
                             videoList.add("https://video.wixstatic.com/video/c851b6_ce8814e7b7634f6790a293b162366a58/1080p/mp4/file.mp4");
-
+                             var texts = [];
+                             texts.add('');
+                             texts.add('part 2.');
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => TwoVideoPlayScreen(
                                           lessonText: 'Basic ECG Waveforms',
-                                          url: videoList,
+                                          url: videoList, text: texts,
                                         )));
                           },
                           child: Column(
