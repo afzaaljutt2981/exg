@@ -25,13 +25,13 @@ class _ThreeVideoPlayScreenState extends State<ThreeVideoPlayScreen> {
     Uri url2 = Uri.parse(widget.url[1]);
     Uri url3 = Uri.parse(widget.url[0]);
     flickManager1 = FlickManager(
-      autoPlay: true,
+        autoPlay: true,
         videoPlayerController: VideoPlayerController.networkUrl(url1));
     flickManager2 = FlickManager(
-      autoPlay: false,
+        autoPlay: false,
         videoPlayerController: VideoPlayerController.networkUrl(url2));
     flickManager3 = FlickManager(
-      autoPlay: false,
+        autoPlay: false,
         videoPlayerController: VideoPlayerController.networkUrl(url3));
   }
 
@@ -98,7 +98,7 @@ class _ThreeVideoPlayScreenState extends State<ThreeVideoPlayScreen> {
               ),
             ),
             CustomSizeBox(20.h),
-            text('INarrow Complex Tachycardias Part 1.'),
+            text('Narrow Complex Tachycardias Part 1.'),
             AspectRatio(
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
