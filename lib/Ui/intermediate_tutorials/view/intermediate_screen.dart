@@ -191,19 +191,20 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                 ),
               ),
               CustomSizeBox(45.h),
-              Padding(
-                padding: EdgeInsets.only(left: 27.w),
+               Padding(
+                padding: EdgeInsets.only(right:  40.w, left: 40.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     lessons(
                         5,
-                        'assets/images/intermediate/intermediate_lesson_5.gif',
+                        'assets/images/intermediate/5.png',
                         "Lesson 5.",
                         "Bundle Branch Blocks",
                         "Learn how the ECG can be used to detect issues with bundle branch conduction"),
-                    // lessons('assets/images/intermediate/6.png', "Lesson 6.",
+                         // lessons('assets/images/intermediate/6.png', "Lesson 6.",
                     //     "Fascicular Blocks", "Coming soon"),
+                
                   ],
                 ),
               ),
