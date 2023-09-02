@@ -73,6 +73,7 @@ flutter:
     - assets/images/beginners/
     - assets/images/intermediate/
     - assets/images/advanced/
+    - assets/images/library/
     - assets/docs/beginner/
     - assets/docs/intermediate/
     - assets/docs/advance/

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../advance_tutorial/view/advance_screen.dart';
+import '../../library/view/library_screen.dart';
 
 class MyDrawer extends StatefulWidget {
   @override
@@ -94,7 +95,10 @@ class _MyDrawerState extends State<MyDrawer> {
               }),
               heading("ECG Library"),
               tutorialsPlans("Rhythm Strips", onTap: () {}),
-              tutorialsPlans("12 Lead ECGs", onTap: () {}),
+              tutorialsPlans("12 Lead ECGs", onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LibraryScreen()));
+              }),
             ],
           )),
     );
