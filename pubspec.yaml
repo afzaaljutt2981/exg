@@ -74,6 +74,7 @@ flutter:
     - assets/images/intermediate/
     - assets/images/advanced/
     - assets/images/library/
+    - assets/images/rhythmStrips/
     - assets/docs/beginner/
     - assets/docs/intermediate/
     - assets/docs/advance/

@@ -2,6 +2,7 @@ import 'package:exg/Ui/beginners_tutorials/view/beginners_screen.dart';
 import 'package:exg/Ui/home/view/home_view.dart';
 import 'package:exg/Ui/intermediate_tutorials/view/intermediate_screen.dart';
 import 'package:exg/Ui/pricing_plan/view/plan_view.dart';
+import 'package:exg/Ui/rhythm_strips/view/rhythm_strips.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_colors.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
@@ -94,7 +95,10 @@ class _MyDrawerState extends State<MyDrawer> {
                         builder: (context) => const AdvanceScreen()));
               }),
               heading("ECG Library"),
-              tutorialsPlans("Rhythm Strips", onTap: () {}),
+              tutorialsPlans("Rhythm Strips", onTap: () {
+                 Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const RhythmStrips()));
+              }),
               tutorialsPlans("12 Lead ECGs", onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const LibraryScreen()));
