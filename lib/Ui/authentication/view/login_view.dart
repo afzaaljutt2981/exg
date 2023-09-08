@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../drawer/view/drawer_view.dart';
+import 'create_login_screen.dart';
 import 'login_screen.dart';
 
 class LoginView extends StatefulWidget {
@@ -73,13 +74,18 @@ class _LoginViewState extends State<LoginView> {
             ),
             CustomSizeBox(30.h),
             text("Log in", onTap: () {
-              Navigator.pushAndRemoveUntil(
+              Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeView()),
-                  (route) => false);
+                  MaterialPageRoute(builder: (context) => CreateLoginScreen(screenType: "Log in",)),
+                  );
             }),
             CustomSizeBox(10.h),
-            text("Sign Up", onTap: () {}),
+            text("Sign Up", onTap: () {
+               Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreateLoginScreen(screenType: "Sign Up",)),
+                  );
+            }),
           ],
         ),
       ),

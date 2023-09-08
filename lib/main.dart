@@ -8,7 +8,6 @@ Future<void> main() async  {
   //   [DeviceOrientation.portraitUp],
   // );
   runApp(const MyApp());
- 
 }
 
 class MyApp extends StatelessWidget {
