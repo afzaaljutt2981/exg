@@ -5,6 +5,7 @@ import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import '../../../global/helper/custom_snackbar.dart';
 import '../../../global/utils/app_colors.dart';
@@ -26,7 +27,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    bool _processLogin = context.watch<AuthProvider>().loginProcess;
+    bool processLogin = context.watch<AuthProvider>().loginProcess;
     return Scaffold(
       backgroundColor: Colors.white,
       key: _scaffoldKey,
@@ -109,59 +110,55 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 80.w,
                     height: 35.h,
                     child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.redColor),
-                            shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.sp),
-                            ))),
-                        onPressed: () async {
-                         
-                          bool isEmailValid = validateEmail(_email.text);
-                          if (_email.text.isEmpty) {
-                            
-                            CustomSnackBar(false).showInSnackBar(
-                                "Email field is empty! ", context);
-                          } else if (_pass.text.isEmpty) {
-                            CustomSnackBar(false).showInSnackBar(
-                                "Password field is Empty ", context);
-                          } else if (isEmailValid == false) {
-                            CustomSnackBar(false)
-                                .showInSnackBar('Invalid email!', context);
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.redColor),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.sp),
+                          ))),
+                      onPressed: () async {
+                        bool isEmailValid = validateEmail(_email.text);
+                        if (_email.text.isEmpty) {
+                          CustomSnackBar(false).showInSnackBar(
+                              "Email field is empty! ", context);
+                        } else if (_pass.text.isEmpty) {
+                          CustomSnackBar(false).showInSnackBar(
+                              "Password field is Empty ", context);
+                        } else if (isEmailValid == false) {
+                          CustomSnackBar(false)
+                              .showInSnackBar('Invalid email!', context);
+                        } else {
+                          if (widget.screenType == "Log in") {
+                            context.read<AuthProvider>().setLoginProcess(true);
+                            await context.read<AuthProvider>().loginFunction(
+                                _email.text, _pass.text, context);
+                            _email.clear();
+                            _pass.clear();
                           } else {
-                            if (widget.screenType == "Log in") {
-                               context
-                                  .read<AuthProvider>()
-                                  .setLoginProcess(true);
-                              await context
-                                  .read<AuthProvider>()
-                                  .loginFunction(
-                                      _email.text, _pass.text, context);
-                            } else {
-                               context
-                                  .read<AuthProvider>()
-                                  .setLoginProcess(true);
-                               await context.read<AuthProvider>().registerFunction(
-                                    _email.text, _pass.text, context);
-                              // ignore: use_build_context_synchronously
-                              await  context.read<AuthProvider>().signUpFunction(
-                                    _email.text, _pass.text, context);
-                            }
+                            context.read<AuthProvider>().setLoginProcess(true);
+                            await context.read<AuthProvider>().registerFunction(
+                                _email.text, _pass.text, context);
+                            // ignore: use_build_context_synchronously
+                            await context.read<AuthProvider>().signUpFunction(
+                                _email.text, _pass.text, context);
+                            _email.clear();
+                            _pass.clear();
                           }
-                        },
-                        child: (_processLogin == false)?  Text(
-                          widget.screenType.toString(),
-                          style: AppTextStyle.ralewayFont(
-                              color: Colors.white,
-                              fontSize: (widget.screenType == "Log in")
-                                  ? 15.sp
-                                  : 12.sp),
-                        ) : SpinKitCircle(
-                                color: Colors.white,
-                                size: 12.sp
-                              ),),
+                        }
+                      },
+                      child: (processLogin == false)
+                          ? Text(
+                              widget.screenType.toString(),
+                              style: AppTextStyle.ralewayFont(
+                                  color: Colors.white,
+                                  fontSize: (widget.screenType == "Log in")
+                                      ? 15.sp
+                                      : 12.sp),
+                            )
+                          : SpinKitCircle(color: Colors.white, size: 15.sp),
+                    ),
                   )
                 ],
               ),

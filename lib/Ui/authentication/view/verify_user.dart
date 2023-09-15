@@ -92,35 +92,39 @@ class _VerifyUserScreenState extends State<VerifyUserScreen> {
                             fontSize: 12.sp, color: Colors.black)),
                   ),
                   CustomSizeBox(25.h),
-                  Center(
-                    child: Pinput(
-                      controller: pinputConroller,
-                      focusNode: focusNode,
-                      keyboardType: TextInputType.number,
-                      length: 6,
-                      onCompleted: (otp) async {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            });
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15.w),
+                    child: Center(
+                      child: Pinput(
+                        controller: pinputConroller,
+                        focusNode: focusNode,
+                        keyboardType: TextInputType.number,
+                        length: 6,
+                        onCompleted: (otp) async {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              });
 
-                        try {
-                          context.read<AuthProvider>().verifyUserOtp(
-                              widget.email.toString(),
-                              widget.pass.toString(),
-                              otp.toString(),
-                              context);
-                        } catch (e) {
-                          Navigator.of(context).pop();
+                          try {
+                            context.read<AuthProvider>().verifyUserOtp(
+                                widget.email.toString(),
+                                widget.pass.toString(),
+                                otp.toString(),
+                                context);
+                          } catch (e) {
+                            Navigator.of(context).pop();
 
-                          FocusScope.of(context).unfocus();
+                            FocusScope.of(context).unfocus();
 
-                        CustomSnackBar(false).showInSnackBar(e.toString(), context);
-                        }
-                      },
+                            CustomSnackBar(false)
+                                .showInSnackBar(e.toString(), context);
+                          }
+                        },
+                      ),
                     ),
                   ),
                   CustomSizeBox(20.h),
