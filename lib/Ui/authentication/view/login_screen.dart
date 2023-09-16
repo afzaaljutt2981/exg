@@ -22,9 +22,10 @@ class LoginScreen extends StatefulWidget {
 
 TextEditingController _email = TextEditingController();
 TextEditingController _pass = TextEditingController();
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 
 class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     bool processLogin = context.watch<AuthProvider>().loginProcess;

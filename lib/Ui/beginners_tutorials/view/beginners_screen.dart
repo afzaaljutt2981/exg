@@ -16,9 +16,8 @@ class BeginnerScreen extends StatefulWidget {
   State<BeginnerScreen> createState() => _BeginnerScreenState();
 }
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
 class _BeginnerScreenState extends State<BeginnerScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     String details =

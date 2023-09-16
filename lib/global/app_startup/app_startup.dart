@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:path_provider/path_provider.dart';
+
 import '../utils/global_hive.dart';
+
 
 class AppStartupConfiguration {
   static doConfigurations() async {
@@ -10,8 +12,13 @@ class AppStartupConfiguration {
     ErrorWidget.builder = (FlutterErrorDetails details) => Container(
           color: Colors.white
         );
-    preferences = await Hive.openBox('appBox');
-     preferences.put('countLength', 0);
-  
+
+ if (!Hive.isBoxOpen("appBox")) {
+      preferences = await Hive.openBox('appBox');
+      preferences.put("countLength", "0");
+    }
+
+     
+    
     }
 }

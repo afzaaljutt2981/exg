@@ -1,15 +1,18 @@
 import 'package:exg/Ui/authentication/view/login_screen.dart';
+import 'package:exg/Ui/authentication/view/login_view.dart';
 import 'package:exg/Ui/beginners_tutorials/view/beginners_screen.dart';
 import 'package:exg/Ui/home/view/home_view.dart';
 import 'package:exg/Ui/intermediate_tutorials/view/intermediate_screen.dart';
 import 'package:exg/Ui/pricing_plan/view/plan_view.dart';
 import 'package:exg/Ui/rhythm_strips/view/rhythm_strips.dart';
+import 'package:exg/Ui/splash_screen/view/splash_view.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_colors.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
 import 'package:exg/global/utils/global_hive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
 
 import '../../advance_tutorial/view/advance_screen.dart';
 import '../../authentication/view/create_login_screen.dart';
@@ -23,6 +26,7 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
+    int tokenValue = int.parse(preferences.get('countLength').toString());
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
@@ -87,33 +91,50 @@ class _MyDrawerState extends State<MyDrawer> {
                   );
                 }),
                 tutorialsPlans("Intermediate", onTap: () {
-                  if (preferences.get('countLength') == 0) {
+                  int tokenValue =
+                      int.parse(preferences.get('countLength').toString());
+                  if (tokenValue < 1) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => CreateLoginScreen(
-                                screenType: 'Log in',
-                              )),
+                          builder: (context) => const LoginView()),
                     );
-                  } else if (preferences.get('countLength') == 7) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PricingScreen()),
-                    );
-                  } else {
+                  } else if (tokenValue > 7) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const IntermediateScreen()),
                     );
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PricingScreen()),
+                    );
                   }
                 }),
                 tutorialsPlans("Advanced", onTap: () {
-                  Navigator.push(
+                  int tokenValue =
+                      int.parse(preferences.get('countLength').toString());
+                  if (tokenValue < 1) {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AdvanceScreen()));
+                          builder: (context) => const LoginView()),
+                    );
+                  } else if (tokenValue > 7) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AdvanceScreen()),
+                    );
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PricingScreen()),
+                    );
+                  }
                 }),
                 heading("ECG Library"),
                 tutorialsPlans("Rhythm Strips", onTap: () {
@@ -128,6 +149,43 @@ class _MyDrawerState extends State<MyDrawer> {
                       MaterialPageRoute(
                           builder: (context) => const LibraryScreen()));
                 }),
+                tokenValue > 0
+                    ? Padding(
+                        padding: EdgeInsets.only(left: 30.w, top: 40.h),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.logout_outlined,
+                              color: AppColors.redColor,
+                              size: 24.sp,
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Hive.openBox("appBox").then((box) {
+                                  box.deleteFromDisk();
+                                });
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SplashScreen()),
+                                    (route) => false);
+                              },
+                              child: Text(
+                                "Logout",
+                                style: AppTextStyle.ralewayFont(
+                                    fontSize: 15.sp,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Container(),
               ],
             )),
       ),

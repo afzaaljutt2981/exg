@@ -2,6 +2,7 @@ import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../global/utils/app_colors.dart';
@@ -14,23 +15,11 @@ class PricingScreen extends StatefulWidget {
   State<PricingScreen> createState() => _PricingScreenState();
 }
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-//  Future<void> _launchUrl (Uri uri) async {
-//     try {
-//       if (await canLaunchUrl(uri )) {
-//         await launchUrl(uri);
-//       }
-//       else {
-//         throw 'Could not launch $uri';
-//       }
-//     } catch (_){}
-//   }
-String _url = 'https://www.exg-learning.com/join-us';
-
 class _PricingScreenState extends State<PricingScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    final websiteUrl = Uri.parse('https://www.exg-learning.com/join-us');
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
@@ -83,10 +72,12 @@ class _PricingScreenState extends State<PricingScreen> {
                     fontWeight: FontWeight.normal),
               ),
             ),
-            CustomSizeBox(10.h),
+            CustomSizeBox(15.h),
             GestureDetector(
               onTap: () {
-                lunchURL('https://www.geeksforgeeks.org/');
+                setState(() {
+                  launchUrl(websiteUrl, mode: LaunchMode.externalApplication);
+                });
               },
               child: Text(
                 'Go to Site',
@@ -100,12 +91,38 @@ class _PricingScreenState extends State<PricingScreen> {
                 ),
               ),
             ),
+
+            //
+            ////
+            /////
+            ///
+            ///
+            ///
+            ///
+            /// // Link(
+            //     uri: websiteUrl,
+            //     target: LinkTarget.defaultTarget,
+            //     builder: (context, openLink) {
+            //       return TextButton(
+            //         onPressed: openLink,
+            //         child: Text(
+            //           'Go to Site',
+            //           textAlign: TextAlign.center,
+            //           style: TextStyle(
+            //             decoration: TextDecoration.underline,
+            //             fontFamily: 'MarkerFeltNarrow',
+            //             fontSize: 13.sp,
+            //             decorationThickness: 7.sp,
+            //             color: Colors.black,
+            //           ),
+            //         ),
+            //       );
+            //     })
           ],
         ),
       ),
     );
   }
-
 
   Future<void> lunchURL(String url) async {
     final Uri uri = Uri(scheme: 'https', host: url);

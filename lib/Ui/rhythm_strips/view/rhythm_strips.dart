@@ -13,9 +13,10 @@ class RhythmStrips extends StatefulWidget {
   State<RhythmStrips> createState() => _RhythmStripsState();
 }
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 
 class _RhythmStripsState extends State<RhythmStrips> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
