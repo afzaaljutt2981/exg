@@ -26,7 +26,6 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
-    int tokenValue = int.parse(preferences.get('countLength').toString());
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
@@ -91,15 +90,18 @@ class _MyDrawerState extends State<MyDrawer> {
                   );
                 }),
                 tutorialsPlans("Intermediate", onTap: () {
-                  int tokenValue =
-                      int.parse(preferences.get('countLength').toString());
-                  if (tokenValue < 1) {
+                  // int tokenValue =
+                  //     int.parse(preferences.get('countLength').toString());
+                  if (preferences.get('startup_session') == null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const LoginView()),
                     );
-                  } else if (tokenValue > 7) {
+                  } else if (preferences.get('startup_session') != null &&
+                      preferences.get('countLength') != null &&
+                      int.parse(preferences.get('countLength').toString()) >
+                          7) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -114,15 +116,16 @@ class _MyDrawerState extends State<MyDrawer> {
                   }
                 }),
                 tutorialsPlans("Advanced", onTap: () {
-                  int tokenValue =
-                      int.parse(preferences.get('countLength').toString());
-                  if (tokenValue < 1) {
+                  if (preferences.get('startup_session') == null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const LoginView()),
                     );
-                  } else if (tokenValue > 7) {
+                  } else if (preferences.get('startup_session') != null &&
+                      preferences.get('countLength') != null &&
+                      int.parse(preferences.get('countLength').toString()) >
+                          7) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -149,7 +152,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       MaterialPageRoute(
                           builder: (context) => const LibraryScreen()));
                 }),
-                tokenValue > 0
+                preferences.get('startup_session') != null
                     ? Padding(
                         padding: EdgeInsets.only(left: 30.w, top: 40.h),
                         child: Row(
@@ -165,7 +168,7 @@ class _MyDrawerState extends State<MyDrawer> {
                             GestureDetector(
                               onTap: () {
                                 Hive.openBox("appBox").then((box) {
-                                  box.deleteFromDisk();
+                                  preferences.put('startup_session', null);
                                 });
                                 Navigator.pushAndRemoveUntil(
                                     context,

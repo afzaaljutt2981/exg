@@ -9,6 +9,7 @@ import 'package:http/http.dart';
 
 import '../../../global/helper/custom_snackbar.dart';
 import '../../../global/utils/global_hive.dart';
+import '../view/create_login_screen.dart';
 
 class AuthProvider extends ChangeNotifier {
   bool loginProcess = false;
@@ -39,21 +40,20 @@ class AuthProvider extends ChangeNotifier {
           context);
       var res = jsonDecode(response.body);
       if (response.statusCode == 200) {
+        preferences.put('startup_session', 'true');
+        final protectedPages =
+            res['additionalData']['protectedPages']['mapValue']['value'];
 
-final protectedPages = res['additionalData']['protectedPages']['mapValue']['value'];
+        int count = 0;
 
-int count = 0;
+        for (var key in protectedPages.keys) {
+          count++;
+        }
 
-for (var key in protectedPages.keys) {
-  count++;
-}
-
-print('Length of protectedPages map: $count');
-
-           preferences.put('countLength', count);
-   
-          // ignore: use_build_context_synchronously
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>   const HomeView() ));
+        preferences.put('countLength', count);
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const HomeView()));
         setLoginProcess(false);
       } else if (response.statusCode == 404) {
         setLoginProcess(false);
@@ -66,7 +66,6 @@ print('Length of protectedPages map: $count');
         CustomSnackBar(false)
             .showInSnackBar("Wrong Password".toString(), context);
       } else if (response.statusCode == 500) {
-
         if (res['message'] == 'Unimplemented feature requested') {
           String bodyResponse = jsonEncode({
             "email": email.toString(),
@@ -208,12 +207,17 @@ print('Length of protectedPages map: $count');
         pass,
         requestBody,
         context);
-    var res = jsonDecode(response.body);
     if (response.statusCode == 200) {
       // ignore: use_build_context_synchronously
       Navigator.of(context).pop();
       // ignore: use_build_context_synchronously
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>   const HomeView() ));
+      CustomSnackBar(true).showInSnackBar(
+          "Account created, Please Loggin.".toString(), context);
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (BuildContext context) => CreateLoginScreen(
+                screenType: 'Log in',
+              )));
     } else if (response.statusCode == 401) {
       // ignore: use_build_context_synchronously
       Navigator.of(context).pop();

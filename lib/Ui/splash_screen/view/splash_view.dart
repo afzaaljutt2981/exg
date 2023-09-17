@@ -16,27 +16,21 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  
-  // initializehive() async {
-  //   if (!Hive.isBoxOpen("appBox")) {
-  //     preferences = await Hive.openBox('appBox');
-  //     preferences.put("countLength", "0");
-  //   }
-  // }
-@override
+  @override
   void initState() {
     super.initState();
-   // initializehive();
-    int tokenValue = int.parse(preferences.get('countLength').toString());
-    Timer(
-        const Duration(seconds: 3),
-        () => (tokenValue > 0)
-            ? Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (BuildContext context) => const HomeView()))
-            : Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (BuildContext context) => const LoginView())));
+      if (preferences.get('startup_session') != null) {
+      Timer(
+          const Duration(seconds: 3),
+          () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (BuildContext context) => const HomeView())));
+    } else {
+      Timer(
+          const Duration(seconds: 3),
+          () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (BuildContext context) => const LoginView())));
+    }
   }
-  
 
   @override
   Widget build(BuildContext context) {
