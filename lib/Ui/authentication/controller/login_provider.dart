@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:exg/Ui/authentication/model/model.dart';
 import 'package:exg/Ui/authentication/view/verify_user.dart';
 import 'package:exg/Ui/home/view/home_view.dart';
+import 'package:exg/Ui/splash_screen/model/toker_model.dart';
 import 'package:exg/global/helper/api_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -13,6 +14,17 @@ import '../view/create_login_screen.dart';
 
 class AuthProvider extends ChangeNotifier {
   bool loginProcess = false;
+
+  Future getJwtToken(BuildContext context) async {
+    Response response = await Apifunctions().getRequest(
+        'https://www.exg-learning.com/_api/v2/dynamicmodel', context);
+    var res = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      TokenModel.tokenJwt =  res['apps']['22bef345-3c5b-4c18-b782-74d4085112ff']['instance']
+          .toString();
+    } else {}
+    notifyListeners();
+  }
 
   setLoginProcess(bool value) {
     loginProcess = value;
@@ -38,6 +50,7 @@ class AuthProvider extends ChangeNotifier {
           pass,
           requestBody,
           context);
+
       var res = jsonDecode(response.body);
       if (response.statusCode == 200) {
         preferences.put('startup_session', 'true');

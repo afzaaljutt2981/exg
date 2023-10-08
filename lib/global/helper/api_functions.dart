@@ -4,21 +4,37 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 
+import '../../Ui/splash_screen/model/toker_model.dart';
+
 class Apifunctions {
   late Response response;
-  Future postRequest(
-      String url, String email, String pass,var body, BuildContext context) async {
+  Future postRequest(String url, String email, String pass, var body,
+      BuildContext context) async {
     try {
       var apiLink = Uri.parse(url);
-     
 
       response = await post(apiLink,
           headers: {
             'Authorization':
-               'w99S3XN8WbvVGZin4qmcXk8bgpY0-DUXV7eUF8C-H0U.eyJpbnN0YW5jZUlkIjoiOWVmMGFlZWQtZDMxYi00Yzc0LThkMGUtNzk4MTM5YmU1NTk2IiwiYXBwRGVmSWQiOiIyMmJlZjM0NS0zYzViLTRjMTgtYjc4Mi03NGQ0MDg1MTEyZmYiLCJtZXRhU2l0ZUlkIjoiOWVmMGFlZWQtZDMxYi00Yzc0LThkMGUtNzk4MTM5YmU1NTk2Iiwic2lnbkRhdGUiOiIyMDIzLTA5LTE2VDEyOjE5OjMzLjM3NVoiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImMyMTI1OTEyLTliYmUtNGFlYi1iMzM3LThjODljN2NhYjU1YSIsInNpdGVPd25lcklkIjoiYzg1MWI2M2UtNWMyNC00ZjMwLThiY2MtOGVlYWU5ZmYzYTE3In0'
-          },
-          body: body); 
+                TokenModel.tokenJwt.toString(),},
+          body: body);
     } on SocketException catch (_) {}
+    return response;
+  }
+
+
+    getRequest(String url, BuildContext context) async {
+    try {
+      var apiLink = Uri.parse(url.toString());
+      response = await get(apiLink, headers: {
+      
+        'Content-Type': 'application/json',
+        "Accept": "*/*",
+     
+      });
+    } on SocketException catch (_) {
+    
+    }
     return response;
   }
 }

@@ -5,6 +5,7 @@ import 'package:exg/Ui/home/view/home_view.dart';
 import 'package:exg/Ui/intermediate_tutorials/view/intermediate_screen.dart';
 import 'package:exg/Ui/pricing_plan/view/plan_view.dart';
 import 'package:exg/Ui/rhythm_strips/view/rhythm_strips.dart';
+import 'package:exg/Ui/splash_screen/view/create_splash.dart';
 import 'package:exg/Ui/splash_screen/view/splash_view.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_colors.dart';
@@ -174,7 +175,7 @@ class _MyDrawerState extends State<MyDrawer> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const SplashScreen()),
+                                             CreateSplashScreen()),
                                     (route) => false);
                               },
                               child: Text(
