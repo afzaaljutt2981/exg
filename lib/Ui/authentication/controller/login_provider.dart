@@ -20,7 +20,8 @@ class AuthProvider extends ChangeNotifier {
         'https://www.exg-learning.com/_api/v2/dynamicmodel', context);
     var res = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      TokenModel.tokenJwt =  res['apps']['22bef345-3c5b-4c18-b782-74d4085112ff']['instance']
+      TokenModel.tokenJwt = res['apps']['22bef345-3c5b-4c18-b782-74d4085112ff']
+              ['instance']
           .toString();
     } else {}
     notifyListeners();
@@ -65,8 +66,10 @@ class AuthProvider extends ChangeNotifier {
 
         preferences.put('countLength', count);
         // ignore: use_build_context_synchronously
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const HomeView()));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => const HomeView()));
+        
+
         setLoginProcess(false);
       } else if (response.statusCode == 404) {
         setLoginProcess(false);
@@ -146,7 +149,7 @@ class AuthProvider extends ChangeNotifier {
           pass,
           requestBody,
           context);
-      var res = jsonDecode(response.body);
+      //  var res = jsonDecode(response.body);
       if (response.statusCode == 200) {
         setLoginProcess(false);
       }
@@ -225,7 +228,7 @@ class AuthProvider extends ChangeNotifier {
       Navigator.of(context).pop();
       // ignore: use_build_context_synchronously
       CustomSnackBar(true).showInSnackBar(
-          "Account created, Please Loggin.".toString(), context);
+          "Account created, Please Login.".toString(), context);
       // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (BuildContext context) => CreateLoginScreen(

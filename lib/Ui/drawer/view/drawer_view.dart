@@ -1,4 +1,3 @@
-import 'package:exg/Ui/authentication/view/login_screen.dart';
 import 'package:exg/Ui/authentication/view/login_view.dart';
 import 'package:exg/Ui/beginners_tutorials/view/beginners_screen.dart';
 import 'package:exg/Ui/home/view/home_view.dart';
@@ -6,7 +5,6 @@ import 'package:exg/Ui/intermediate_tutorials/view/intermediate_screen.dart';
 import 'package:exg/Ui/pricing_plan/view/plan_view.dart';
 import 'package:exg/Ui/rhythm_strips/view/rhythm_strips.dart';
 import 'package:exg/Ui/splash_screen/view/create_splash.dart';
-import 'package:exg/Ui/splash_screen/view/splash_view.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_colors.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
@@ -16,10 +14,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 
 import '../../advance_tutorial/view/advance_screen.dart';
-import '../../authentication/view/create_login_screen.dart';
 import '../../library/view/library_screen.dart';
 
 class MyDrawer extends StatefulWidget {
+  const MyDrawer({super.key});
+
   @override
   State<MyDrawer> createState() => _MyDrawerState();
 }

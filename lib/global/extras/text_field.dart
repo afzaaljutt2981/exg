@@ -29,19 +29,20 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      cursorColor: Colors.white,
       keyboardType: super.widget.type,
       obscureText: super.widget.isObsecure,
       controller: super.widget.textController,
       maxLines: super.widget.numOfLines,
       onChanged: super.widget.onChanged,
-      style: AppTextStyle.ralewayFont(color: Colors.white),
+      style: AppTextStyle.ralewayFont(color: Colors.white, fontSize: 15.sp),
       decoration: InputDecoration(
         fillColor: AppColors.blueColor,
         filled: true,
         hintText: super.widget.hintText,
-        hintStyle: const TextStyle(
+        hintStyle: TextStyle(
           color: Colors.white,
-          fontSize: 15,
+          fontSize: 14.sp,
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         // fillColor: CColors.fillColor,

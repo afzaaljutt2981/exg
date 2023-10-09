@@ -23,10 +23,10 @@ class LoginScreen extends StatefulWidget {
 TextEditingController _email = TextEditingController();
 TextEditingController _pass = TextEditingController();
 
-
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  @override
+ 
+ @override
   Widget build(BuildContext context) {
     bool processLogin = context.watch<AuthProvider>().loginProcess;
     return Scaffold(
@@ -135,8 +135,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             context.read<AuthProvider>().setLoginProcess(true);
                             await context.read<AuthProvider>().loginFunction(
                                 _email.text, _pass.text, context);
-                            _email.clear();
-                            _pass.clear();
+                            // _email.clear();
+                            // _pass.clear();
                           } else {
                             context.read<AuthProvider>().setLoginProcess(true);
                             await context.read<AuthProvider>().registerFunction(
@@ -144,8 +144,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             // ignore: use_build_context_synchronously
                             await context.read<AuthProvider>().signUpFunction(
                                 _email.text, _pass.text, context);
-                            _email.clear();
-                            _pass.clear();
+                            // _email.clear();
+                            // _pass.clear();
                           }
                         }
                       },
