@@ -21,7 +21,7 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
   @override
   Widget build(BuildContext context) {
     String details =
-        'Welcome to your first EXG tutorial on ECG interaption. Each lesson comes with video tutorials that outline the main learning points of the session. After you have watched the videos, you can move on the text based portion of the lessons where some of the topics are covered in more detail. Each section ends with a short quiz to help you consolidate your learning. Once you have completed all 6 lessons. You should move on to complete the end of block exam. ';
+        'Welcome to your first EXG tutorial on ECG interpretation. Each lesson comes with video tutorials that outline the main learning points of the session. After you have watched the videos, you can move on the text based portion of the lessons where some of the topics are covered in more detail. Each section ends with a short quiz to help you consolidate your learning. Once you have completed all 6 lessons. You should move on to complete the end of block exam. ';
     String endBlockDetails =
         "Once you have completed all 5 lessons, test yourself with our end of block exam. We recommend that you don't progress to the intermediate tutorial until you have scored over 70% in your exam. You can retake this test any time you like whilst your membership is active";
     return Scaffold(
@@ -44,7 +44,7 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
             )
           ],
         ),
-        endDrawer: MyDrawer(),
+        endDrawer: const MyDrawer(),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -96,10 +96,11 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                           height: 2,
                           color: AppColors.blueColor,
                           fontWeight: FontWeight.normal),
+                      textAlign: TextAlign.justify,
                     ),
                     CustomSizeBox(35.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         lessons(
                             1,
@@ -117,23 +118,25 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                     ),
                     CustomSizeBox(45.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         GestureDetector(
                           onTap: () {
                             var videoList = [];
                             videoList.add(
                                 "https://video.wixstatic.com/video/c851b6_21e1f85ea9a046a68d25eb5511dd89fa/1080p/mp4/file.mp4");
-                            videoList.add("https://video.wixstatic.com/video/c851b6_ce8814e7b7634f6790a293b162366a58/1080p/mp4/file.mp4");
-                             var texts = [];
-                             texts.add('');
-                             texts.add('part 2.');
+                            videoList.add(
+                                "https://video.wixstatic.com/video/c851b6_ce8814e7b7634f6790a293b162366a58/1080p/mp4/file.mp4");
+                            var texts = [];
+                            texts.add('');
+                            texts.add('part 2.');
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => TwoVideoPlayScreen(
                                           lessonText: 'Basic ECG Waveforms',
-                                          url: videoList, text: texts,
+                                          url: videoList,
+                                          text: texts,
                                         )));
                           },
                           child: Column(

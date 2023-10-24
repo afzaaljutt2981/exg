@@ -1,17 +1,12 @@
 import 'dart:async';
-import 'dart:convert';
-
-import 'package:crypto/crypto.dart';
 import 'package:exg/Ui/authentication/controller/login_provider.dart';
 import 'package:exg/Ui/home/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 import '../../../global/utils/global_hive.dart';
 import '../../authentication/view/login_view.dart';
-import '../model/toker_model.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

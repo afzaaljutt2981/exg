@@ -83,6 +83,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 ),
                 heading("Tutorials"),
                 tutorialsPlans("Beginner", onTap: () {
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -102,12 +103,14 @@ class _MyDrawerState extends State<MyDrawer> {
                       preferences.get('countLength') != null &&
                       int.parse(preferences.get('countLength').toString()) >
                           7) {
+                    Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const IntermediateScreen()),
                     );
                   } else {
+                    Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -117,6 +120,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 }),
                 tutorialsPlans("Advanced", onTap: () {
                   if (preferences.get('startup_session') == null) {
+                    Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -126,12 +130,14 @@ class _MyDrawerState extends State<MyDrawer> {
                       preferences.get('countLength') != null &&
                       int.parse(preferences.get('countLength').toString()) >
                           7) {
+                            Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const AdvanceScreen()),
                     );
                   } else {
+                    Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -141,12 +147,14 @@ class _MyDrawerState extends State<MyDrawer> {
                 }),
                 heading("ECG Library"),
                 tutorialsPlans("Rhythm Strips", onTap: () {
+                  Navigator.pop(context);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const RhythmStrips()));
                 }),
                 tutorialsPlans("12 Lead ECGs", onTap: () {
+                  Navigator.pop(context);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -174,7 +182,7 @@ class _MyDrawerState extends State<MyDrawer> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                             CreateSplashScreen()),
+                                            const CreateSplashScreen()),
                                     (route) => false);
                               },
                               child: Text(

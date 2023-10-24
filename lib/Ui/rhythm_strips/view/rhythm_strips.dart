@@ -39,7 +39,7 @@ class _RhythmStripsState extends State<RhythmStrips> {
           )
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(

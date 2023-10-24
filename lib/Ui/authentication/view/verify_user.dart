@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 import '../../../global/helper/custom_snackbar.dart';
 
+// ignore: must_be_immutable
 class VerifyUserScreen extends StatefulWidget {
   VerifyUserScreen({required this.email, required this.pass, super.key});
   String email;

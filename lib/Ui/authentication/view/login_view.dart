@@ -1,4 +1,3 @@
-import 'package:exg/Ui/home/view/home_view.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_colors.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
@@ -8,7 +7,6 @@ import 'package:page_transition/page_transition.dart';
 
 import '../../drawer/view/drawer_view.dart';
 import 'create_login_screen.dart';
-import 'login_screen.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -42,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
           )
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

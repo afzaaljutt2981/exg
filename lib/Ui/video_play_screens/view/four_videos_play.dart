@@ -11,6 +11,7 @@ import '../../../global/utils/app_text_styles.dart';
 class FourVideoPlayScreen extends StatefulWidget {
   FourVideoPlayScreen({required this.lessonText, required this.url, super.key});
   String lessonText;
+  // ignore: prefer_typing_uninitialized_variables
   var url;
   @override
   State<FourVideoPlayScreen> createState() => _FourVideoPlayScreenState();
@@ -22,8 +23,8 @@ class _FourVideoPlayScreenState extends State<FourVideoPlayScreen> {
     super.initState();
     Uri url1 = Uri.parse(widget.url[0]);
     Uri url2 = Uri.parse(widget.url[1]);
-    Uri url3 = Uri.parse(widget.url[0]);
-    Uri url4 = Uri.parse(widget.url[0]);
+    Uri url3 = Uri.parse(widget.url[2]);
+    Uri url4 = Uri.parse(widget.url[3]);
     flickManager1 = FlickManager(
       autoPlay: true,
         videoPlayerController: VideoPlayerController.networkUrl(url1));
@@ -108,6 +109,10 @@ class _FourVideoPlayScreenState extends State<FourVideoPlayScreen> {
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
                   flickVideoWithControls: FlickVideoWithControls(
+                      iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                     controls: FlickPortraitControls(
                       progressBarSettings: FlickProgressBarSettings(
                         bufferedColor: Colors.black12,
@@ -125,7 +130,12 @@ class _FourVideoPlayScreenState extends State<FourVideoPlayScreen> {
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
                   flickVideoWithControls: FlickVideoWithControls(
+                      iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                     controls: FlickPortraitControls(
+                      
                       progressBarSettings: FlickProgressBarSettings(
                         bufferedColor: Colors.black12,
                         handleColor: Colors.black,
@@ -142,6 +152,10 @@ class _FourVideoPlayScreenState extends State<FourVideoPlayScreen> {
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
                   flickVideoWithControls: FlickVideoWithControls(
+                      iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                     controls: FlickPortraitControls(
                       progressBarSettings: FlickProgressBarSettings(
                         bufferedColor: Colors.black12,
@@ -159,6 +173,10 @@ class _FourVideoPlayScreenState extends State<FourVideoPlayScreen> {
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
                   flickVideoWithControls: FlickVideoWithControls(
+                      iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                     controls: FlickPortraitControls(
                       progressBarSettings: FlickProgressBarSettings(
                         bufferedColor: Colors.black12,

@@ -22,7 +22,7 @@ class _VideoPlayScreenState extends State<VideoPlayScreen> {
     super.initState();
     Uri url = Uri.parse(widget.url);
     flickManager = FlickManager(
-      autoPlay: true,
+        autoPlay: true,
         videoPlayerController: VideoPlayerController.networkUrl(url));
   }
 
@@ -87,6 +87,10 @@ class _VideoPlayScreenState extends State<VideoPlayScreen> {
             aspectRatio: 16 / 9,
             child: FlickVideoPlayer(
                 flickVideoWithControls: FlickVideoWithControls(
+                  iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                   controls: FlickPortraitControls(
                     progressBarSettings: FlickProgressBarSettings(
                       bufferedColor: Colors.black12,

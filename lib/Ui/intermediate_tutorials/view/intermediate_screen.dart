@@ -16,14 +16,12 @@ class IntermediateScreen extends StatefulWidget {
   State<IntermediateScreen> createState() => _IntermediateScreenState();
 }
 
-
-
 class _IntermediateScreenState extends State<IntermediateScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     String details =
-        "Welcome to the intermediate section of the EXG course. This action focusses on identifying structural pathology within the heart. In order to do this, it's really important that you have a good understanding of the basics of the ECG. So, if you haven't yet completed our beginner's tutorial, we recomended you start there. If you've already finished all off those modules then you can move on to complete the end of block exam once you are all done ";
+        "Welcome to the intermediate section of the EXG course. This saction focusses on identifying structural pathology within the heart. In order to do this, it's really important that you have a good understanding of the basics of the ECG. So, if you haven't yet completed our beginner's tutorial, we recomended you start there.";
     String endBlockDetails =
         "Once you have completed all 5 lessons, test yourself with our end of block exam. We recommend that you don't progress to the intermediate tutorial until you have scored over 70% in your exam. You can retake this test any time you like whilst your membership is active";
     return Scaffold(
@@ -46,7 +44,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
             )
           ],
         ),
-        endDrawer: MyDrawer(),
+        endDrawer: const MyDrawer(),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -98,6 +96,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                           height: 2,
                           color: AppColors.blueColor,
                           fontWeight: FontWeight.normal),
+                      textAlign: TextAlign.justify,
                     ),
                     CustomSizeBox(35.h),
                   ],
@@ -106,7 +105,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 30.w),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     lessons(
                         1,
@@ -119,9 +118,12 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                         var videoList = [];
                         videoList.add(
                             'https://video.wixstatic.com/video/c851b6_c7202b0b62f146e8947cd064d431da79/1080p/mp4/file.mp4');
-                        videoList.add('https://video.wixstatic.com/video/c851b6_e3de63b50f8b465cb5565e965394cb7d/1080p/mp4/file.mp4');
-                         videoList.add('https://video.wixstatic.com/video/c851b6_ddc21acaf55847f982512e57cf0d041a/1080p/mp4/file.mp4');
-                          videoList.add('https://video.wixstatic.com/video/c851b6_3e894bd4b8464a1da44339b7c152bfae/1080p/mp4/file.mp4');
+                        videoList.add(
+                            'https://video.wixstatic.com/video/c851b6_e3de63b50f8b465cb5565e965394cb7d/1080p/mp4/file.mp4');
+                        videoList.add(
+                            'https://video.wixstatic.com/video/c851b6_ddc21acaf55847f982512e57cf0d041a/1080p/mp4/file.mp4');
+                        videoList.add(
+                            'https://video.wixstatic.com/video/c851b6_3e894bd4b8464a1da44339b7c152bfae/1080p/mp4/file.mp4');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -174,7 +176,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 40.w, left: 40.w),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     lessons(
                         3,
@@ -192,8 +194,8 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                 ),
               ),
               CustomSizeBox(45.h),
-               Padding(
-                padding: EdgeInsets.only(right:  40.w, left: 40.w),
+              Padding(
+                padding: EdgeInsets.only(right: 40.w, left: 40.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -203,9 +205,8 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                         "Lesson 5.",
                         "Bundle Branch Blocks",
                         "Learn how the ECG can be used to detect issues with bundle branch conduction"),
-                         // lessons('assets/images/intermediate/6.png', "Lesson 6.",
+                    // lessons('assets/images/intermediate/6.png', "Lesson 6.",
                     //     "Fascicular Blocks", "Coming soon"),
-                
                   ],
                 ),
               ),
@@ -230,7 +231,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                         padding: EdgeInsets.symmetric(horizontal: 23.w),
                         child: Text(
                           endBlockDetails,
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.justify,
                           style: AppTextStyle.ralewayFont(
                               fontSize: 9.sp,
                               height: 1.8,

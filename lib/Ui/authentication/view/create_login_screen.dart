@@ -3,10 +3,11 @@ import 'package:exg/Ui/authentication/view/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class CreateLoginScreen extends StatefulWidget {
    CreateLoginScreen({ required this.screenType, super.key});
-  @override
   String screenType;
+  @override
   State<CreateLoginScreen> createState() => _CreateLoginScreenState();
 }
 

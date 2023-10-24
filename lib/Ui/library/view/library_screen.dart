@@ -37,7 +37,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
           )
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -63,7 +63,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 libraryWidget(
-                    "A with LBB", "assets/images/library/AF with LBBB.jpg"),
+                    "AF with LBBB", "assets/images/library/AF with LBBB.jpg"),
                 libraryWidget(
                     "Anterior STEMI with reciprocal change no rhythm strip",
                     "assets/images/library/Anterior STEMI with reciprocal change no rhythm strip.jpg")
@@ -85,7 +85,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
               children: [
                 libraryWidget("Bifasicular Block",
                     "assets/images/library/Bifasicular Block.jpg"),
-                libraryWidget("Elecrtrical alternans",
+                libraryWidget("Electrical alternans",
                     "assets/images/library/Elecrtrical alternans.jpg")
               ],
             ),

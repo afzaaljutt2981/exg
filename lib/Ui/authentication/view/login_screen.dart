@@ -1,17 +1,16 @@
 import 'package:exg/Ui/authentication/controller/login_provider.dart';
-import 'package:exg/Ui/authentication/view/verify_user.dart';
 import 'package:exg/global/extras/text_field.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import '../../../global/helper/custom_snackbar.dart';
 import '../../../global/utils/app_colors.dart';
 import '../../../global/utils/app_text_styles.dart';
 import '../../drawer/view/drawer_view.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatefulWidget {
   LoginScreen({required this.screenType, super.key});
   String screenType;
@@ -25,8 +24,14 @@ TextEditingController _pass = TextEditingController();
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
- 
- @override
+  @override
+  void initState() {
+    _email.clear();
+    _pass.clear();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     bool processLogin = context.watch<AuthProvider>().loginProcess;
     return Scaffold(
@@ -49,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
           )
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

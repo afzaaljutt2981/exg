@@ -66,9 +66,10 @@ class AuthProvider extends ChangeNotifier {
 
         preferences.put('countLength', count);
         // ignore: use_build_context_synchronously
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => const HomeView()));
-        
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeView()),
+            (route) => false);
 
         setLoginProcess(false);
       } else if (response.statusCode == 404) {
@@ -227,8 +228,8 @@ class AuthProvider extends ChangeNotifier {
       // ignore: use_build_context_synchronously
       Navigator.of(context).pop();
       // ignore: use_build_context_synchronously
-      CustomSnackBar(true).showInSnackBar(
-          "Account created, Please Login.".toString(), context);
+      CustomSnackBar(true)
+          .showInSnackBar("Account created, Please Login.".toString(), context);
       // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (BuildContext context) => CreateLoginScreen(

@@ -46,7 +46,7 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
             )
           ],
         ),
-        endDrawer: MyDrawer(),
+        endDrawer: const MyDrawer(),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -97,10 +97,11 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                           height: 2,
                           color: AppColors.blueColor,
                           fontWeight: FontWeight.normal),
+                      textAlign: TextAlign.justify,
                     ),
                     CustomSizeBox(35.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         GestureDetector(
                           onTap: () {
@@ -217,17 +218,11 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                             ],
                           ),
                         ),
-                        // lessons(
-                        //     2,
-                        //     'assets/images/advanced/2.png',
-                        //     "Lesson 2.",
-                        //     "Ventricular Arrhythmias",
-                        //     "This section covers regular and irregular broad complex tachycardias"),
                       ],
                     ),
                     CustomSizeBox(45.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         lessons(
                             3,
@@ -243,20 +238,9 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                             "Learn about the roles of Na+, K+ and Ca2+ within the cardiac cells"),
                       ],
                     ),
-                    // CustomSizeBox(25.h),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: [
-                    //     lessons(
-                    //         'assets/images/beginners/beginner_lesson_5.png',
-                    //         "Lesson 5.",
-                    //         "Basic interpretation (rhythm)",
-                    //         "Learn our six step approach to rhythm analysis as used by the UK resuscitation council"),
-                    //   ],
-                    // ),
                     CustomSizeBox(65.h),
                     Padding(
-                      padding: EdgeInsets.only(left: 35.w),
+                      padding: EdgeInsets.only(left: 40.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -267,10 +251,10 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                     ),
                     Center(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30.w),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Text(
                           endBlockDetails,
-                          textAlign: TextAlign.start,
+                          textAlign: TextAlign.center,
                           style: AppTextStyle.ralewayFont(
                               fontSize: 9.sp,
                               height: 1.8,

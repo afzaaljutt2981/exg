@@ -1,10 +1,11 @@
 import 'package:exg/Ui/authentication/controller/login_provider.dart';
-import 'package:exg/Ui/authentication/view/login_screen.dart';
 import 'package:exg/Ui/splash_screen/view/splash_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 class CreateSplashScreen extends StatefulWidget {
+  const CreateSplashScreen({super.key});
+
 
   @override
   State<CreateSplashScreen> createState() => _CreateSplashScreenState();

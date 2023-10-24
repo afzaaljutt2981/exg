@@ -1,9 +1,9 @@
 import 'package:exg/global/utils/app_colors.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class TextFieldWidget extends StatefulWidget {
   TextEditingController textController;
   bool isObsecure;

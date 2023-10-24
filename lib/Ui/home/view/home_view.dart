@@ -38,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
           )
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

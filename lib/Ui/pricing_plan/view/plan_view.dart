@@ -39,7 +39,7 @@ class _PricingScreenState extends State<PricingScreen> {
           )
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(

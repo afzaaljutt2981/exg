@@ -103,6 +103,10 @@ class _TwoVideoPlayScreenState extends State<TwoVideoPlayScreen> {
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
                   flickVideoWithControls: FlickVideoWithControls(
+                      iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                     controls: FlickPortraitControls(
                       progressBarSettings: FlickProgressBarSettings(
                         bufferedColor: Colors.black12,
@@ -120,6 +124,10 @@ class _TwoVideoPlayScreenState extends State<TwoVideoPlayScreen> {
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
                   flickVideoWithControls: FlickVideoWithControls(
+                      iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                     controls: FlickPortraitControls(
                       progressBarSettings: FlickProgressBarSettings(
                         bufferedColor: Colors.black12,

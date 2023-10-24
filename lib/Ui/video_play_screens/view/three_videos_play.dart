@@ -12,6 +12,7 @@ class ThreeVideoPlayScreen extends StatefulWidget {
   ThreeVideoPlayScreen(
       {required this.lessonText, required this.url, super.key});
   String lessonText;
+  // ignore: prefer_typing_uninitialized_variables
   var url;
   @override
   State<ThreeVideoPlayScreen> createState() => _ThreeVideoPlayScreenState();
@@ -23,7 +24,7 @@ class _ThreeVideoPlayScreenState extends State<ThreeVideoPlayScreen> {
     super.initState();
     Uri url1 = Uri.parse(widget.url[0]);
     Uri url2 = Uri.parse(widget.url[1]);
-    Uri url3 = Uri.parse(widget.url[0]);
+    Uri url3 = Uri.parse(widget.url[2]);
     flickManager1 = FlickManager(
         autoPlay: true,
         videoPlayerController: VideoPlayerController.networkUrl(url1));
@@ -101,8 +102,23 @@ class _ThreeVideoPlayScreenState extends State<ThreeVideoPlayScreen> {
             text('Narrow Complex Tachycardias Part 1.'),
             AspectRatio(
               aspectRatio: 16 / 9,
+              //         child:  FlickVideoPlayer(
+              //   flickManager: flickManager1!,
+              //   // preferredDeviceOrientation: [
+              //   //   DeviceOrientation.landscapeRight,
+              //   //   DeviceOrientation.landscapeLeft
+              //   // ],
+              //   systemUIOverlay: [],
+              //   flickVideoWithControls: FlickVideoWithControls(
+              //     controls: LandscapePlayerControls(),
+              //   ),
+              // ),
               child: FlickVideoPlayer(
                   flickVideoWithControls: FlickVideoWithControls(
+                     iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                     controls: FlickPortraitControls(
                       progressBarSettings: FlickProgressBarSettings(
                         bufferedColor: Colors.black12,
@@ -120,6 +136,10 @@ class _ThreeVideoPlayScreenState extends State<ThreeVideoPlayScreen> {
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
                   flickVideoWithControls: FlickVideoWithControls(
+                      iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                     controls: FlickPortraitControls(
                       progressBarSettings: FlickProgressBarSettings(
                         bufferedColor: Colors.black12,
@@ -137,6 +157,10 @@ class _ThreeVideoPlayScreenState extends State<ThreeVideoPlayScreen> {
               aspectRatio: 16 / 9,
               child: FlickVideoPlayer(
                   flickVideoWithControls: FlickVideoWithControls(
+                      iconThemeData:
+                      const IconThemeData(color: AppColors.blueColor),
+                  textStyle:
+                      const TextStyle(color: AppColors.blueColor),
                     controls: FlickPortraitControls(
                       progressBarSettings: FlickProgressBarSettings(
                         bufferedColor: Colors.black12,
