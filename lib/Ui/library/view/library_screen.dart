@@ -337,7 +337,11 @@ class _LibraryScreenState extends State<LibraryScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image(image: AssetImage(image)),
+            InteractiveViewer(
+                maxScale: 5.0,
+                minScale: 0.01,
+                boundaryMargin: EdgeInsets.all(8.sp),
+                child: Image(image: AssetImage(image))),
             Padding(
               padding: EdgeInsets.all(8.sp),
               child: Text(

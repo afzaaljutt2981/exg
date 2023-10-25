@@ -13,8 +13,6 @@ class RhythmStrips extends StatefulWidget {
   State<RhythmStrips> createState() => _RhythmStripsState();
 }
 
-
-
 class _RhythmStripsState extends State<RhythmStrips> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
@@ -64,6 +62,76 @@ class _RhythmStripsState extends State<RhythmStrips> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                // GestureDetector(
+                //   onTap: () {
+                //     showDialog(
+                //         barrierDismissible: true,
+                //         context: context,
+                //         builder: (BuildContext context) {
+                //           return seeFullImage(
+                //               'https://static.wixstatic.com/media/c851b6_0f74228be5e647ecb804063bda6b3be2~mv2.png/v1/fill/w_704,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_0f74228be5e647ecb804063bda6b3be2~mv2.png',
+                //               '1st Degree HB');
+                //         });
+                //   },
+                //   child: Column(
+                //     children: [
+                //       SizedBox(
+                //         width: 120.w,
+                //         child: Text(
+                //           '1st Degree HB',
+                //           overflow: TextOverflow.ellipsis,
+                //           textAlign: TextAlign.center,
+                //           style: AppTextStyle.markerFont(
+                //               color: AppColors.blueColor,
+                //               fontSize: 15.sp,
+                //               fontWeight: FontWeight.bold),
+                //         ),
+                //       ),
+                //       CustomSizeBox(10.h),
+                //       Image(
+                //         image: const NetworkImage(
+                //             'https://static.wixstatic.com/media/c851b6_0f74228be5e647ecb804063bda6b3be2~mv2.png/v1/fill/w_704,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_0f74228be5e647ecb804063bda6b3be2~mv2.png'),
+                //         height: 40.h,
+                //         width: 150.w,
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // GestureDetector(
+                //   onTap: () {
+                //     showDialog(
+                //         barrierDismissible: true,
+                //         context: context,
+                //         builder: (BuildContext context) {
+                //           return seeFullImage(
+                //               "https://static.wixstatic.com/media/c851b6_386597eb9779482e86fe02cfe9b8726b~mv2.png/v1/fill/w_704,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_386597eb9779482e86fe02cfe9b8726b~mv2.png",
+                //               '2nd Degree Mobitz II Heart Block');
+                //         });
+                //   },
+                //   child: Column(
+                //     children: [
+                //       SizedBox(
+                //         width: 120.w,
+                //         child: Text(
+                //           '2nd Degree Mobitz II Heart Block',
+                //           overflow: TextOverflow.ellipsis,
+                //           textAlign: TextAlign.center,
+                //           style: AppTextStyle.markerFont(
+                //               color: AppColors.blueColor,
+                //               fontSize: 15.sp,
+                //               fontWeight: FontWeight.bold),
+                //         ),
+                //       ),
+                //       CustomSizeBox(10.h),
+                //       Image(
+                //         image: const NetworkImage(
+                //             "https://static.wixstatic.com/media/c851b6_386597eb9779482e86fe02cfe9b8726b~mv2.png/v1/fill/w_704,h_244,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_386597eb9779482e86fe02cfe9b8726b~mv2.png"),
+                //         height: 40.h,
+                //         width: 150.w,
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 rhythmWidget("1st Degree HB",
                     "assets/images/rhythmStrips/1st Degree HB.jpg"),
                 rhythmWidget("2nd Degree Mobitz II Heart Block",
@@ -178,7 +246,10 @@ class _RhythmStripsState extends State<RhythmStrips> {
     );
   }
 
-  Widget rhythmWidget(String text, String image) {
+  Widget rhythmWidget(
+    String text,
+    String image,
+  ) {
     return GestureDetector(
       onTap: () {
         showDialog(
@@ -225,7 +296,11 @@ class _RhythmStripsState extends State<RhythmStrips> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image(image: AssetImage(image)),
+            InteractiveViewer(
+              maxScale: 5.0,
+                minScale: 0.01,
+                boundaryMargin: EdgeInsets.all(8.sp),
+              child: Image(image: AssetImage(image))),
             Padding(
               padding: EdgeInsets.all(8.sp),
               child: Text(
