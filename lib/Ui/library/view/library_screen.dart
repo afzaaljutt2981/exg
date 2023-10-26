@@ -16,6 +16,89 @@ class LibraryScreen extends StatefulWidget {
 class _LibraryScreenState extends State<LibraryScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  List textList = [
+    'Atrial Fibrillation With Left Bundle Branch Block',
+    'Elecrtrical alternans',
+    'Green lead fallen off',
+    'Hyperkalaemia 1',
+    'Hyperkalaemia 2',
+    'Hyperkalaemia - sine wave',
+    'Hypokalaemia',
+    'Incomplete LBBB',
+    'STEMI (Inferior)',
+    'Left Bundle Branch Block',
+    'Left Ventricular Hypertrophy with Strain Pattern',
+    'Monomorphic VT with northwest axis',
+    'NSTEMI',
+    'Orthodromic AVRT',
+    'Pericarditis / Myocarditis',
+    'Posterior STEMI',
+    'Trifasicular Block',
+    'Right Bundle Branch Block + 1st degree AV block',
+    'Right ventricular hypertrophy with strain pattern',
+    'Pulmonary Embolism - S1Q3T3',
+    'Sinus Rhythm',
+    'NSTEMI with T-wave Inversion',
+    'Ventricular Tachycardia with Positive Concordance',
+    'Ventricular Tachycardia with AV dissociation',
+    'AV Re-entry Tachycardia',
+    'Atrial Fibrillaition with Digoxin effect',
+    'Left axis deviation',
+    'Lateral Q-wave Infarct',
+    'Bifasicular Block',
+    'Left Posterior Fascicular Block',
+    'Sinus Tachycardia',
+    'STEMI (anterior)',
+    'STEMI (Antero-lateral distribution)',
+    'STEMI (Antero-septal)',
+    'STEMI (inferior with Q-waves)',
+    'Wellens Syndrome Type A',
+  ];
+
+  List imagesList = [
+    'https://static.wixstatic.com/media/c851b6_c7a625c16e60416db11d9b921da00075~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_c7a625c16e60416db11d9b921da00075~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_d9515d22f3d94803bcdf80c2cc6a48bc~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_d9515d22f3d94803bcdf80c2cc6a48bc~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_86a14838dde64b03bfe3569ffb300928~mv2.png/v1/fill/w_1145,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_86a14838dde64b03bfe3569ffb300928~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_7e71b60ebd41421d8b4dfee071294310~mv2.png/v1/fill/w_1206,h_716,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_7e71b60ebd41421d8b4dfee071294310~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_ef996f964446460fb1f57fb361febc48~mv2.png/v1/fill/w_1149,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_ef996f964446460fb1f57fb361febc48~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_06f57cc5ac984dedbc817541ac795cfb~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_06f57cc5ac984dedbc817541ac795cfb~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_df9681c0e2e1460880a852de0b83aec7~mv2.png/v1/fill/w_1151,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_df9681c0e2e1460880a852de0b83aec7~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_4afdcaf309be466e95577091e1f588c6~mv2.jpg/v1/fill/w_1163,h_718,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_4afdcaf309be466e95577091e1f588c6~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_bb52e6c479c74cbaa9ff70a4ce164576~mv2.png/v1/fill/w_1202,h_717,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_bb52e6c479c74cbaa9ff70a4ce164576~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_22c77fea66404233a288c0a4584f53a0~mv2.jpg/v1/fill/w_1162,h_718,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_22c77fea66404233a288c0a4584f53a0~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_a4f2d48c7e594af7ab617fb26b2406d3~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_a4f2d48c7e594af7ab617fb26b2406d3~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_d1064ffdf6bb4c30b923f8f9a3bb3668~mv2.jpg/v1/fill/w_1166,h_718,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_d1064ffdf6bb4c30b923f8f9a3bb3668~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_ca8b110944c44cbaa4cd21b72c7852cd~mv2.png/v1/fill/w_1182,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_ca8b110944c44cbaa4cd21b72c7852cd~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_557481da3cef49e8a92e7bc5d3376a02~mv2.png/v1/fill/w_1132,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_557481da3cef49e8a92e7bc5d3376a02~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_424089160e424990be67aab3e1a097e8~mv2.jpg/v1/fill/w_1162,h_718,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_424089160e424990be67aab3e1a097e8~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_f094efb4ad9e468198b9f6c4c6e2afcb~mv2.png/v1/fill/w_1166,h_682,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_f094efb4ad9e468198b9f6c4c6e2afcb~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_03c9d03a2b9c4d1aabbee3096acc3a07~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_03c9d03a2b9c4d1aabbee3096acc3a07~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_cc610e2dbfa0444b8eb048e71dae5c91~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_cc610e2dbfa0444b8eb048e71dae5c91~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_e87c563dd113451792240dd9f0e2b706~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_e87c563dd113451792240dd9f0e2b706~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_dee3879caca34de3ae6812b6d0392a58~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_dee3879caca34de3ae6812b6d0392a58~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_8de160edaace44a091882dc8e8abb17b~mv2.jpg/v1/fill/w_1162,h_718,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_8de160edaace44a091882dc8e8abb17b~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_6023987800ec460dbeefefa82c5bc88a~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_6023987800ec460dbeefefa82c5bc88a~mv2.jpg',
+    'https://static.wixstatic.com/media/c851b6_a73a54b4afd6489484ae89665b2eca96~mv2.png/v1/fill/w_1140,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_a73a54b4afd6489484ae89665b2eca96~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_2cf1d4c1d46e4db6bc282e9eab3fae4c~mv2.png/v1/fill/w_1150,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_2cf1d4c1d46e4db6bc282e9eab3fae4c~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_5a4cdfdb1e694b6a9168fcefcb143c9a~mv2.png/v1/fill/w_1200,h_716,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_5a4cdfdb1e694b6a9168fcefcb143c9a~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_47055d02397140d69fa73c01b9621723~mv2.png/v1/fill/w_1083,h_650,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_47055d02397140d69fa73c01b9621723~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_7ecc7c4dfcc5412f8e0586b2fd54e3f2~mv2.png/v1/fill/w_1193,h_718,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_7ecc7c4dfcc5412f8e0586b2fd54e3f2~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_f185150677c944b0b145f4c4e0a70b91~mv2.png/v1/fill/w_1139,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_f185150677c944b0b145f4c4e0a70b91~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_bf1a056c313142f681764204908db804~mv2.png/v1/fill/w_1141,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_bf1a056c313142f681764204908db804~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_580595a2a9fc458ab7e29cd7b48675fe~mv2.png/v1/fill/w_1139,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_580595a2a9fc458ab7e29cd7b48675fe~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_7e5600e79f0343d084cdc3b979e1c85f~mv2.png/v1/fill/w_1318,h_791,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_7e5600e79f0343d084cdc3b979e1c85f~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_915355f7cad44c2da73bf46693aab2c3~mv2.png/v1/fill/w_1196,h_718,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_915355f7cad44c2da73bf46693aab2c3~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_afddead233f640b280e54a442a90bfe9~mv2.png/v1/fill/w_1534,h_717,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_afddead233f640b280e54a442a90bfe9~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_604a31defdee4540bb0795a3d67dc584~mv2.png/v1/fill/w_1195,h_718,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_604a31defdee4540bb0795a3d67dc584~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_9bbe568e665a4dde85fbb3196b0bd43e~mv2.png/v1/fill/w_1198,h_718,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_9bbe568e665a4dde85fbb3196b0bd43e~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_01ccce7950ac4cd391510ef532ad34d1~mv2.png/v1/fill/w_1139,h_684,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c851b6_01ccce7950ac4cd391510ef532ad34d1~mv2.png',
+    'https://static.wixstatic.com/media/c851b6_c7a625c16e60416db11d9b921da00075~mv2.jpg/v1/fill/w_1107,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c851b6_c7a625c16e60416db11d9b921da00075~mv2.jpg',
+  ];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
@@ -59,231 +142,18 @@ class _LibraryScreenState extends State<LibraryScreen> {
               ),
             ),
             CustomSizeBox(20.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget(
-                    "AF with LBBB", "assets/images/library/AF with LBBB.jpg"),
-                libraryWidget(
-                    "Anterior STEMI with reciprocal change no rhythm strip",
-                    "assets/images/library/Anterior STEMI with reciprocal change no rhythm strip.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Antero-lateral STEMI",
-                    "assets/images/library/Antero-lateral STEMI .jpg"),
-                libraryWidget("Atrial Fibrillaition with Digoxin effect",
-                    "assets/images/library/Atrial Fibrillaition with Digoxin effect.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Bifasicular Block",
-                    "assets/images/library/Bifasicular Block.jpg"),
-                libraryWidget("Electrical alternans",
-                    "assets/images/library/Elecrtrical alternans.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Green lead fallen off",
-                    "assets/images/library/Green lead fallen off.jpg"),
-                libraryWidget("hyperkalaemia 1",
-                    "assets/images/library/hyperkalaemia 1.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("hyperkalaemia 2",
-                    "assets/images/library/hyperkalaemia 2.jpg"),
-                libraryWidget("Hypokalaemia (1)",
-                    "assets/images/library/Hypokalaemia (1).jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Incomplete LBBB",
-                    "assets/images/library/Incomplete LBBB.jpg"),
-                libraryWidget("Inferior STEMI",
-                    "assets/images/library/Inferior STEMI.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Lateral Q-wave Infarct",
-                    "assets/images/library/Lateral Q-wave Infarct.jpg"),
-                libraryWidget("LBBB", "assets/images/library/LBBB.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Left axis deviation",
-                    "assets/images/library/Left axis deviation.jpg"),
-                libraryWidget("Left posterior fascicular block",
-                    "assets/images/library/Left posterior fascicular block.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Left-bundle-branch-block",
-                    "assets/images/library/Left-bundle-branch-block.jpg"),
-                libraryWidget("LVH with strain",
-                    "assets/images/library/LVH with strain.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Monomorphic VT with northwest axis",
-                    "assets/images/library/Monomorphic VT with northwest axis.jpg"),
-                libraryWidget("Normal Sinus Rhythm",
-                    "assets/images/library/Normal Sinus Rhythm.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("NSTEMI", "assets/images/library/NSTEMI.jpg"),
-                libraryWidget("Orthodromic AVRT copy",
-                    "assets/images/library/Orthodromic AVRT copy.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("pericardia effusion_tamponade",
-                    "assets/images/library/pericardia effusion_tamponade.jpg"),
-                libraryWidget("PericarditisMyocarditis",
-                    "assets/images/library/PericarditisMyocarditis.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Posterior STEMI",
-                    "assets/images/library/Posterior STEMI.jpg"),
-                libraryWidget("RBBB", "assets/images/library/RBBB.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("RBBB1", "assets/images/library/RBBB1.jpg"),
-                libraryWidget("Right-bundle-branch-block",
-                    "assets/images/library/Right-bundle-branch-block.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("RVH with strain",
-                    "assets/images/library/RVH with strain.jpg"),
-                libraryWidget("S1Q3T3", "assets/images/library/S1Q3T3.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget(
-                    "Sine wave", "assets/images/library/Sine wave.jpg"),
-                libraryWidget("Sinus rhythm 12 lead",
-                    "assets/images/library/Sinus rhythm 12 lead.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget(
-                    "Sinus Rhythm", "assets/images/library/Sinus Rhythm.jpg"),
-                libraryWidget("Sinus Tachycardia",
-                    "assets/images/library/Sinus Tachycardia.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("STEMI (anterior)",
-                    "assets/images/library/STEMI (anterior).jpg"),
-                libraryWidget("STEMI (antero-septal)",
-                    "assets/images/library/STEMI (antero-septal).jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("STEMI (inferior with Q-waves)",
-                    "assets/images/library/STEMI (inferior with Q-waves).jpg"),
-                libraryWidget("Trifascicular Block",
-                    "assets/images/library/Trifascicular Block.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget(
-                    "TWI NSTEMI", "assets/images/library/TWI NSTEMI.jpg"),
-                libraryWidget(
-                    "VT negative concordance and extreme axis deviation",
-                    "assets/images/library/VT negative concordance and extreme axis deviation.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("VT positive concordance",
-                    "assets/images/library/VT positive concordance.jpg"),
-                libraryWidget("VT with AV dissociation",
-                    "assets/images/library/VT with AV dissociation.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("Wellens Syndrome Type A",
-                    "assets/images/library/Wellens Syndrome Type A.jpg"),
-                libraryWidget("Wellens Syndrome Type A",
-                    "assets/images/library/Wellens Syndrome Type A.png")
-              ],
-            ),
-            CustomSizeBox(40.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                libraryWidget("WPW AVRT", "assets/images/library/WPW AVRT.jpg"),
-                libraryWidget("WPW AVRT", "assets/images/library/WPW AVRT.jpg")
-              ],
-            ),
-            CustomSizeBox(40.h),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: textList.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisExtent: 110.h,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return libraryWidget(textList[index], imagesList[index]);
+              },
+            )
           ],
         ),
       ),
@@ -314,12 +184,24 @@ class _LibraryScreenState extends State<LibraryScreen> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          CustomSizeBox(10.h),
-          Image(
-            image: AssetImage(image),
+          // CustomSizeBox(10.h),
+          // Image(
+          //   image: AssetImage(image),
+          //   height: 70.h,
+          //   width: 140.w,
+          // ),
+          CustomSizeBox(4.h),
+          FadeInImage(
             height: 70.h,
             width: 140.w,
-          )
+            image: NetworkImage(image),
+            placeholder: const AssetImage('assets/images/placeHolder.png'),
+            imageErrorBuilder: (context, error, stackTrace) {
+              return Image.asset('assets/images/placeHolder.png',
+                  fit: BoxFit.fitWidth);
+            },
+            fit: BoxFit.fitWidth,
+          ),
         ],
       ),
     );
@@ -341,7 +223,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
                 maxScale: 5.0,
                 minScale: 0.01,
                 boundaryMargin: EdgeInsets.all(8.sp),
-                child: Image(image: AssetImage(image))),
+                child: Image(image: NetworkImage(image))),
             Padding(
               padding: EdgeInsets.all(8.sp),
               child: Text(
