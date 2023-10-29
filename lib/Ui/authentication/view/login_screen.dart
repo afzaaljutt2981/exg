@@ -1,5 +1,4 @@
 import 'package:exg/Ui/authentication/controller/login_provider.dart';
-import 'package:exg/global/extras/text_field.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
   }
 
+  bool hidePassword = true;
   @override
   Widget build(BuildContext context) {
     bool processLogin = context.watch<AuthProvider>().loginProcess;
@@ -89,21 +89,11 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
-              child: TextFieldWidget(
-                  hintText: 'Email',
-                  numOfLines: 1,
-                  isObsecure: false,
-                  textController: _email,
-                  type: TextInputType.emailAddress),
+              child: textField(_email, false, 'Email', 0),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 0.h),
-              child: TextFieldWidget(
-                  hintText: 'Password',
-                  numOfLines: 1,
-                  isObsecure: true,
-                  textController: _pass,
-                  type: TextInputType.text),
+              child: textField(_pass, hidePassword, 'Password', 1),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w, vertical: 20.h),
@@ -181,6 +171,55 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget textField(TextEditingController textController, bool isObsecure,
+      String hintText, int index) {
+    return TextField(
+      textInputAction: index == 0 ? TextInputAction.next : TextInputAction.done,
+      cursorColor: Colors.white,
+      obscureText: isObsecure,
+      controller: textController,
+      style: AppTextStyle.ralewayFont(color: Colors.white, fontSize: 15.sp),
+      decoration: InputDecoration(
+        suffixIcon: index == 0
+            ? null
+            : GestureDetector(
+                onTap: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                child: hidePassword
+                    ? Icon(
+                        Icons.visibility_off_outlined,
+                        color: Colors.white,
+                        size: 20.sp,
+                      )
+                    : Icon(
+                        Icons.visibility_outlined,
+                        color: Colors.white,
+                        size: 20.sp,
+                      )),
+        fillColor: AppColors.blueColor,
+        filled: true,
+        hintText: hintText,
+        hintStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 14.sp,
+        ),
+        contentPadding: EdgeInsets.only(
+            left: 10.w,
+            top: index == 1 ? 0.h : 14.h,
+            right: index == 1 ? 10.w : 0.h),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+          borderSide: BorderSide(width: 0, style: BorderStyle.none),
         ),
       ),
     );

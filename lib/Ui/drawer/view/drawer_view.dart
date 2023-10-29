@@ -147,18 +147,58 @@ class _MyDrawerState extends State<MyDrawer> {
                 }),
                 heading("ECG Library"),
                 tutorialsPlans("Rhythm Strips", onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
+                   if (preferences.get('startup_session') == null) {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const RhythmStrips()));
+                          builder: (context) => const LoginView()),
+                    );
+                  } else if (preferences.get('startup_session') != null &&
+                      preferences.get('countLength') != null &&
+                      int.parse(preferences.get('countLength').toString()) >
+                          7) {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RhythmStrips()),
+                    );
+                  } else {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PricingScreen()),
+                    );
+                  }
+               
                 }),
                 tutorialsPlans("12 Lead ECGs", onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
+                  if (preferences.get('startup_session') == null) {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LibraryScreen()));
+                          builder: (context) => const LoginView()),
+                    );
+                  } else if (preferences.get('startup_session') != null &&
+                      preferences.get('countLength') != null &&
+                      int.parse(preferences.get('countLength').toString()) >
+                          7) {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LibraryScreen()),
+                    );
+                  } else {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PricingScreen()),
+                    );
+                  }
+                 
                 }),
                 preferences.get('startup_session') != null
                     ? Padding(
