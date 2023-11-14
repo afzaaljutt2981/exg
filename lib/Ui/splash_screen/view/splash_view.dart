@@ -1,12 +1,7 @@
 import 'dart:async';
-import 'package:exg/Ui/authentication/controller/login_provider.dart';
 import 'package:exg/Ui/home/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-
-import '../../../global/utils/global_hive.dart';
-import '../../authentication/view/login_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,19 +14,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<AuthProvider>().getJwtToken(context);
-    Future.delayed(const Duration(seconds: 1));
-    if (preferences.get('startup_session') != null) {
       Timer(
           const Duration(seconds: 2),
           () => Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (BuildContext context) => const HomeView())));
-    } else {
-      Timer(
-          const Duration(seconds: 2),
-          () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (BuildContext context) => const LoginView())));
-    }
+
   }
 
   @override

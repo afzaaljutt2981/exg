@@ -1,12 +1,9 @@
+import 'package:exg/Ui/splash_screen/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'Ui/splash_screen/view/create_splash.dart';
-import 'global/app_startup/app_startup.dart';
-
 Future<void> main() async  {
     WidgetsFlutterBinding.ensureInitialized();
-  await AppStartupConfiguration.doConfigurations();
   await SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp],
   );
@@ -23,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const CreateSplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
