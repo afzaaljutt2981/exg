@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../global/utils/app_colors.dart';
 import '../../../global/utils/app_text_styles.dart';
 import '../../drawer/view/drawer_view.dart';
+import '../../video_play_screens/view/two_videos_play.dart';
 import '../../video_play_screens/view/video_play.dart';
 
 class BeginnerScreen extends StatefulWidget {
@@ -15,13 +16,12 @@ class BeginnerScreen extends StatefulWidget {
   State<BeginnerScreen> createState() => _BeginnerScreenState();
 }
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
 class _BeginnerScreenState extends State<BeginnerScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     String details =
-        'Welcome to your first EXG tutorial on ECG interaption. Each lesson comes with video tutorials that outline the main learning points of the session. After you have watched the videos, you can move on the text based portion of the lessons where some of the topics are covered in more detail. Each section ends with a short quiz to help you consolidate your learning. Once you have completed all 6 lessons. You should move on to complete the end of block exam. ';
+        'Welcome to your first EXG tutorial on ECG interpretation. Each lesson comes with video tutorials that outline the main learning points of the session. After you have watched the videos, you can move on the text based portion of the lessons where some of the topics are covered in more detail. Each section ends with a short quiz to help you consolidate your learning. Once you have completed all 6 lessons. You should move on to complete the end of block exam. ';
     String endBlockDetails =
         "Once you have completed all 5 lessons, test yourself with our end of block exam. We recommend that you don't progress to the intermediate tutorial until you have scored over 70% in your exam. You can retake this test any time you like whilst your membership is active";
     return Scaffold(
@@ -44,7 +44,7 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
             )
           ],
         ),
-        endDrawer: MyDrawer(),
+        endDrawer: const MyDrawer(),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -96,17 +96,20 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                           height: 2,
                           color: AppColors.blueColor,
                           fontWeight: FontWeight.normal),
+                      textAlign: TextAlign.justify,
                     ),
                     CustomSizeBox(35.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         lessons(
+                            1,
                             'assets/images/beginners/beginner_lesson_1.png',
                             "Lesson 1.",
                             "Anatomy",
-                            "Learn about the anotmy of the heart and cardic condunting syster"),
+                            "Learn about the anatomy of the heart and the cardiac conducting system"),
                         lessons(
+                            2,
                             'assets/images/beginners/beginner_lesson_2.png',
                             "Lesson 2.",
                             "ECG Setup",
@@ -115,14 +118,66 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                     ),
                     CustomSizeBox(45.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        GestureDetector(
+                          onTap: () {
+                            var videoList = [];
+                            videoList.add(
+                                "https://video.wixstatic.com/video/c851b6_21e1f85ea9a046a68d25eb5511dd89fa/1080p/mp4/file.mp4");
+                            videoList.add(
+                                "https://video.wixstatic.com/video/c851b6_ce8814e7b7634f6790a293b162366a58/1080p/mp4/file.mp4");
+                            var texts = [];
+                            texts.add('');
+                            texts.add('part 2.');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TwoVideoPlayScreen(
+                                          lessonText: 'Basic ECG Waveforms',
+                                          url: videoList,
+                                          text: texts,
+                                        )));
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image(
+                                image: const AssetImage(
+                                  'assets/images/beginners/beginner_lesson_3.png',
+                                ),
+                                height: 100.sp,
+                              ),
+                              Text(
+                                'Lesson 3.',
+                                style: AppTextStyle.markerFont(
+                                    color: AppColors.blueColor,
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Text(
+                                "Basic ECG Waveforms",
+                                style: AppTextStyle.markerFont(
+                                    color: AppColors.redColor,
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              SizedBox(
+                                width: 100.w,
+                                child: Text(
+                                  "Learn about the P-wave, QRS complex and T-wave,",
+                                  style: AppTextStyle.markerFont(
+                                      color: Colors.grey,
+                                      fontSize: 8.sp,
+                                      fontWeight: FontWeight.normal),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         lessons(
-                            'assets/images/beginners/beginner_lesson_3.png',
-                            "Lesson 3.",
-                            "Basic ECG Waveforms",
-                            "Learn about the P-wave, QRS complex and T-wave,"),
-                        lessons(
+                            4,
                             'assets/images/beginners/beginner_lesson_4.png',
                             "Lesson 4.",
                             "ECG physics",
@@ -134,6 +189,7 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         lessons(
+                            5,
                             'assets/images/beginners/beginner_lesson_5.png',
                             "Lesson 5.",
                             "Basic interpretation (rhythm)",
@@ -222,17 +278,29 @@ class _BeginnerScreenState extends State<BeginnerScreen> {
     );
   }
 
-  Widget lessons(
-      String image, String lessonText, String subHeading, String detail) {
-    return InkWell(
+  Widget lessons(int videoType, String image, String lessonText,
+      String subHeading, String detail) {
+    return GestureDetector(
       onTap: () {
+        String url = videoType == 1
+            ? 'https://video.wixstatic.com/video/c851b6_9cae6b24e98a498a8acfc21e0f6338b1/1080p/mp4/file.mp4'
+            : videoType == 2
+                ? "https://video.wixstatic.com/video/c851b6_4b97374228584b8aa8ed0bc95cda4d34/1080p/mp4/file.mp4"
+                :
+                //   videoType == 3 ? "https://video.wixstatic.com/video/c851b6_21e1f85ea9a046a68d25eb5511dd89fa/1080p/mp4/file.mp4"
+                //  :
+                videoType == 4
+                    ? "https://video.wixstatic.com/video/c851b6_0ad193718bfe47699ebe35b3b24a5b34/1080p/mp4/file.mp4"
+                    : videoType == 5
+                        ? 'https://video.wixstatic.com/video/c851b6_6e139b10c35846f98610c531c00924ff/1080p/mp4/file.mp4'
+                        : '';
+
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => VideoPlayScreen(
                       lessonText: subHeading,
-                      url:
-                          'https://drive.google.com/drive/u/0/folders/1c6lhjsIgVo5P5a6jCad-CgnLlNNySD_n',
+                      url: url,
                     )));
       },
       child: Column(

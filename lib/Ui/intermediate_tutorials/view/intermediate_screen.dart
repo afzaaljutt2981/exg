@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../global/utils/app_colors.dart';
 import '../../../global/utils/app_text_styles.dart';
 import '../../drawer/view/drawer_view.dart';
+import '../../video_play_screens/view/four_videos_play.dart';
 import '../../video_play_screens/view/video_play.dart';
 
 class IntermediateScreen extends StatefulWidget {
@@ -15,13 +16,12 @@ class IntermediateScreen extends StatefulWidget {
   State<IntermediateScreen> createState() => _IntermediateScreenState();
 }
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
 class _IntermediateScreenState extends State<IntermediateScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     String details =
-        "Welcome to the intermediate section of the EXG course. This action focusses on identifying structural pathology within the heart. In order to do this, it's really important that you have a good understanding of the basics of the ECG. So, if you haven't yet completed our beginner's tutorial, we recomended you start there. If you've already finished all off those modules then you can move on to complete the end of block exam once you are all done ";
+        "Welcome to the intermediate section of the EXG course. This saction focusses on identifying structural pathology within the heart. In order to do this, it's really important that you have a good understanding of the basics of the ECG. So, if you haven't yet completed our beginner's tutorial, we recomended you start there.";
     String endBlockDetails =
         "Once you have completed all 5 lessons, test yourself with our end of block exam. We recommend that you don't progress to the intermediate tutorial until you have scored over 70% in your exam. You can retake this test any time you like whilst your membership is active";
     return Scaffold(
@@ -44,7 +44,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
             )
           ],
         ),
-        endDrawer: MyDrawer(),
+        endDrawer: const MyDrawer(),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -96,6 +96,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                           height: 2,
                           color: AppColors.blueColor,
                           fontWeight: FontWeight.normal),
+                      textAlign: TextAlign.justify,
                     ),
                     CustomSizeBox(35.h),
                   ],
@@ -104,18 +105,70 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 30.w),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     lessons(
+                        1,
                         'assets/images/intermediate/intermediate_lesson_1.gif',
                         "Lesson 1.",
                         "Cardiac Axis",
-                        "Learn about the anotmy of the heart and cardic condunting syster"),
-                    lessons(
-                        'assets/images/intermediate/12345.png',
-                        "Lesson 2.",
-                        "ECG Setup",
                         "Cardiac axis is the general direction of electrical activity within the heart"),
+                    GestureDetector(
+                      onTap: () {
+                        var videoList = [];
+                        videoList.add(
+                            'https://video.wixstatic.com/video/c851b6_c7202b0b62f146e8947cd064d431da79/1080p/mp4/file.mp4');
+                        videoList.add(
+                            'https://video.wixstatic.com/video/c851b6_e3de63b50f8b465cb5565e965394cb7d/1080p/mp4/file.mp4');
+                        videoList.add(
+                            'https://video.wixstatic.com/video/c851b6_ddc21acaf55847f982512e57cf0d041a/1080p/mp4/file.mp4');
+                        videoList.add(
+                            'https://video.wixstatic.com/video/c851b6_3e894bd4b8464a1da44339b7c152bfae/1080p/mp4/file.mp4');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FourVideoPlayScreen(
+                                      lessonText: 'myocardial infarctions',
+                                      url: videoList,
+                                    )));
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Lesson 2.',
+                            style: AppTextStyle.markerFont(
+                                color: AppColors.blueColor,
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.normal),
+                          ),
+                          Text(
+                            'myocardial infarctions',
+                            style: AppTextStyle.markerFont(
+                                color: AppColors.redColor,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.normal),
+                          ),
+                          CustomSizeBox(15.h),
+                          Image(
+                            image: const AssetImage(
+                                'assets/images/intermediate/12345.png'),
+                            height: 100.sp,
+                          ),
+                          SizedBox(
+                            width: 100.w,
+                            child: Text(
+                              'Learn how to diagnose, localise and age a myocardial infarction',
+                              style: AppTextStyle.markerFont(
+                                  color: Colors.grey,
+                                  fontSize: 8.sp,
+                                  fontWeight: FontWeight.normal),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -123,14 +176,16 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 40.w, left: 40.w),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     lessons(
+                        3,
                         'assets/images/intermediate/3.png',
                         "Lesson 3.",
                         "Pericarditis and Effusion",
                         "Learn about how inflammation of the pericardium affects the ECG"),
                     lessons(
+                        4,
                         'assets/images/intermediate/4.png',
                         "Lesson 4.",
                         "Cardiac Hypertrophy",
@@ -140,12 +195,13 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
               ),
               CustomSizeBox(45.h),
               Padding(
-                padding: EdgeInsets.only(left: 27.w),
+                padding: EdgeInsets.only(right: 40.w, left: 40.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     lessons(
-                        'assets/images/intermediate/intermediate_lesson_5.gif',
+                        5,
+                        'assets/images/intermediate/5.png',
                         "Lesson 5.",
                         "Bundle Branch Blocks",
                         "Learn how the ECG can be used to detect issues with bundle branch conduction"),
@@ -175,7 +231,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                         padding: EdgeInsets.symmetric(horizontal: 23.w),
                         child: Text(
                           endBlockDetails,
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.justify,
                           style: AppTextStyle.ralewayFont(
                               fontSize: 9.sp,
                               height: 1.8,
@@ -251,17 +307,27 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
     );
   }
 
-  Widget lessons(
-      String image, String lessonText, String subHeading, String detail) {
-    return InkWell(
+  Widget lessons(int videoNumber, String image, String lessonText,
+      String subHeading, String detail) {
+    return GestureDetector(
       onTap: () {
+        String url = videoNumber == 1
+            ? "https://video.wixstatic.com/video/c851b6_0a3af45f65cb46f89cf3e38cb5eb8f67/1080p/mp4/file.mp4"
+            //  : videoNumber == 2
+            //    ? "https://video.wixstatic.com/video/c851b6_c7202b0b62f146e8947cd064d431da79/1080p/mp4/file.mp4"
+            : videoNumber == 3
+                ? "https://video.wixstatic.com/video/c851b6_8d22d6f733eb4d2ab1ac052c0b110f91/1080p/mp4/file.mp4"
+                : videoNumber == 4
+                    ? "https://video.wixstatic.com/video/c851b6_5b68a8705d804e09a4e9f59d0b0186fd/1080p/mp4/file.mp4"
+                    : videoNumber == 5
+                        ? "https://video.wixstatic.com/video/c851b6_bcef90a9cfef42cbbedfb8036513810a/1080p/mp4/file.mp4"
+                        : '';
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => VideoPlayScreen(
                       lessonText: subHeading,
-                      url:
-                          'https://drive.google.com/drive/u/0/folders/1c6lhjsIgVo5P5a6jCad-CgnLlNNySD_n',
+                      url: url,
                     )));
       },
       child: Column(

@@ -14,18 +14,19 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
+      final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      key: _scaffoldKey,
+      key: scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         actions: <Widget>[
           GestureDetector(
-            onTap: () => _scaffoldKey.currentState!.openEndDrawer(),
+            onTap: () => scaffoldKey.currentState!.openEndDrawer(),
             child: Padding(
               padding: EdgeInsets.only(right: 23.sp),
               child: Icon(
@@ -37,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
           )
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

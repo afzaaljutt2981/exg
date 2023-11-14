@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../global/utils/app_colors.dart';
 import '../../../global/utils/app_text_styles.dart';
 import '../../drawer/view/drawer_view.dart';
+import '../../video_play_screens/view/three_videos_play.dart';
+import '../../video_play_screens/view/two_videos_play.dart';
 import '../../video_play_screens/view/video_play.dart';
 
 class AdvanceScreen extends StatefulWidget {
@@ -44,7 +46,7 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
             )
           ],
         ),
-        endDrawer: MyDrawer(),
+        endDrawer: const MyDrawer(),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -95,53 +97,150 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                           height: 2,
                           color: AppColors.blueColor,
                           fontWeight: FontWeight.normal),
+                      textAlign: TextAlign.justify,
                     ),
                     CustomSizeBox(35.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        lessons(
-                            'assets/images/advanced/1.png',
-                            "Lesson 1.",
-                            "Atrial Arrhythmias",
-                            "This section covers regular and irregular narrow complex tachycardias"),
-                        lessons(
-                            'assets/images/advanced/2.png',
-                            "Lesson 2.",
-                            "Ventricular Arrhythmias",
-                            "This section covers regular and irregular broad complex tachycardias"),
+                        GestureDetector(
+                          onTap: () {
+                            var videoLinks = [];
+                            videoLinks.add(
+                                'https://video.wixstatic.com/video/c851b6_2f3a4687669442e89665e01ff5f93a37/1080p/mp4/file.mp4');
+                            videoLinks.add(
+                                'https://video.wixstatic.com/video/c851b6_dac5898a60564097be7f9bcddf8bd8c5/1080p/mp4/file.mp4');
+                            videoLinks.add(
+                                'https://video.wixstatic.com/video/c851b6_8e9f461c97d3482baecf2ccf3d0926db/1080p/mp4/file.mp4');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ThreeVideoPlayScreen(
+                                          lessonText: 'Atrial Arrhythmias',
+                                          url: videoLinks,
+                                        )));
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image(
+                                image: const AssetImage(
+                                    'assets/images/advanced/1.png'),
+                                height: 100.sp,
+                              ),
+                              CustomSizeBox(10.h),
+                              Text(
+                                "Lesson 1.",
+                                style: AppTextStyle.markerFont(
+                                    color: AppColors.blueColor,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Text(
+                                'Atrial Arrhythmias',
+                                style: AppTextStyle.markerFont(
+                                    color: AppColors.redColor,
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              CustomSizeBox(3.h),
+                              SizedBox(
+                                width: 100.w,
+                                child: Text(
+                                  'This section covers regular and irregular narrow complex tachycardias',
+                                  style: AppTextStyle.markerFont(
+                                      color: Colors.grey,
+                                      fontSize: 8.sp,
+                                      fontWeight: FontWeight.normal),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            var videoLinks = [];
+                            videoLinks.add(
+                                'https://video.wixstatic.com/video/c851b6_2f3a4687669442e89665e01ff5f93a37/1080p/mp4/file.mp4');
+                            videoLinks.add(
+                                'https://video.wixstatic.com/video/c851b6_dac5898a60564097be7f9bcddf8bd8c5/1080p/mp4/file.mp4');
+                            videoLinks.add(
+                                'https://video.wixstatic.com/video/c851b6_8e9f461c97d3482baecf2ccf3d0926db/1080p/mp4/file.mp4');
+                            var texts = [];
+                            texts.add('Broad Complex Tachycardias');
+                            texts.add('Diagnosing Ventricular Tachycardia');
+
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TwoVideoPlayScreen(
+                                          lessonText: 'Ventricular Arrhythmias',
+                                          url: videoLinks,
+                                          text: texts,
+                                        )));
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image(
+                                image: const AssetImage(
+                                    'assets/images/advanced/2.png'),
+                                height: 100.sp,
+                              ),
+                              CustomSizeBox(10.h),
+                              Text(
+                                "Lesson 2.",
+                                style: AppTextStyle.markerFont(
+                                    color: AppColors.blueColor,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Text(
+                                'Ventricular Arrhythmias',
+                                style: AppTextStyle.markerFont(
+                                    color: AppColors.redColor,
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              CustomSizeBox(3.h),
+                              SizedBox(
+                                width: 100.w,
+                                child: Text(
+                                  'This section covers regular and irregular broad complex tachycardias',
+                                  style: AppTextStyle.markerFont(
+                                      color: Colors.grey,
+                                      fontSize: 8.sp,
+                                      fontWeight: FontWeight.normal),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                     CustomSizeBox(45.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         lessons(
+                            3,
                             'assets/images/advanced/3.png',
                             "Lesson 3.",
                             "Heart Blocks",
                             "Learn how to differentiate 1st, 2nd and 3rd degree heart blocks"),
                         lessons(
+                            4,
                             'assets/images/advanced/4.png',
                             "Lesson 4.",
                             "Metabolic Derrangement",
                             "Learn about the roles of Na+, K+ and Ca2+ within the cardiac cells"),
                       ],
                     ),
-                    // CustomSizeBox(25.h),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: [
-                    //     lessons(
-                    //         'assets/images/beginners/beginner_lesson_5.png',
-                    //         "Lesson 5.",
-                    //         "Basic interpretation (rhythm)",
-                    //         "Learn our six step approach to rhythm analysis as used by the UK resuscitation council"),
-                    //   ],
-                    // ),
                     CustomSizeBox(65.h),
                     Padding(
-                      padding: EdgeInsets.only(left: 35.w),
+                      padding: EdgeInsets.only(left: 40.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -152,10 +251,10 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                     ),
                     Center(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30.w),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Text(
                           endBlockDetails,
-                          textAlign: TextAlign.start,
+                          textAlign: TextAlign.center,
                           style: AppTextStyle.ralewayFont(
                               fontSize: 9.sp,
                               height: 1.8,
@@ -231,17 +330,25 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
     );
   }
 
-  Widget lessons(
-      String image, String lessonText, String subHeading, String detail) {
-    return InkWell(
+  Widget lessons(int videoNumber, String image, String lessonText,
+      String subHeading, String detail) {
+    return GestureDetector(
       onTap: () {
+        String
+            url = // videoNumber == 1 ? "https://video.wixstatic.com/video/c851b6_2f3a4687669442e89665e01ff5f93a37/1080p/mp4/file.mp4 " :
+            videoNumber == 2
+                ? "https://video.wixstatic.com/video/c851b6_4dbe37c07e474d5088d7f4c2e15c89c1/1080p/mp4/file.mp4"
+                : videoNumber == 3
+                    ? "https://video.wixstatic.com/video/c851b6_a38e9b1fb36f45b6ace280b63c2999d7/1080p/mp4/file.mp4"
+                    : videoNumber == 4
+                        ? "https://video.wixstatic.com/video/c851b6_9efd381cd6764604a8118c55ded975ac/1080p/mp4/file.mp4"
+                        : '';
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => VideoPlayScreen(
                       lessonText: subHeading,
-                      url:
-                          'https://drive.google.com/drive/u/0/folders/1c6lhjsIgVo5P5a6jCad-CgnLlNNySD_n',
+                      url: url,
                     )));
       },
       child: Column(

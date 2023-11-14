@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'Ui/splash_screen/view/splash_view.dart';
+import 'Ui/splash_screen/view/create_splash.dart';
+import 'global/app_startup/app_startup.dart';
 
 Future<void> main() async  {
-  // await SystemChrome.setPreferredOrientations(
-  //   [DeviceOrientation.portraitUp],
-  // );
+    WidgetsFlutterBinding.ensureInitialized();
+  await AppStartupConfiguration.doConfigurations();
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp],
+  );
   runApp(const MyApp());
- 
 }
 
 class MyApp extends StatelessWidget {
@@ -19,9 +21,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'EXG',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: const SplashScreen(),
+      home: const CreateSplashScreen(),
     );
   }
 }

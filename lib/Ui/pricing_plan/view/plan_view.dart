@@ -14,23 +14,11 @@ class PricingScreen extends StatefulWidget {
   State<PricingScreen> createState() => _PricingScreenState();
 }
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-//  Future<void> _launchUrl (Uri uri) async {
-//     try {
-//       if (await canLaunchUrl(uri )) {
-//         await launchUrl(uri);
-//       }
-//       else {
-//         throw 'Could not launch $uri';
-//       }
-//     } catch (_){}
-//   }
-String _url = 'https://www.exg-learning.com/join-us';
-
 class _PricingScreenState extends State<PricingScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    final websiteUrl = Uri.parse('https://www.exg-learning.com/join-us');
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
@@ -51,7 +39,7 @@ class _PricingScreenState extends State<PricingScreen> {
           )
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -83,10 +71,12 @@ class _PricingScreenState extends State<PricingScreen> {
                     fontWeight: FontWeight.normal),
               ),
             ),
-            CustomSizeBox(10.h),
+            CustomSizeBox(15.h),
             GestureDetector(
               onTap: () {
-                lunchURL('https://www.geeksforgeeks.org/');
+                setState(() {
+                  launchUrl(websiteUrl, mode: LaunchMode.externalApplication);
+                });
               },
               child: Text(
                 'Go to Site',
@@ -100,12 +90,21 @@ class _PricingScreenState extends State<PricingScreen> {
                 ),
               ),
             ),
+            CustomSizeBox(25.h),
+            Text(
+              'If you already subscribed, Please login again!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'MarkerFeltNarrow',
+                fontSize: 13.sp,
+                color: AppColors.redColor,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-
 
   Future<void> lunchURL(String url) async {
     final Uri uri = Uri(scheme: 'https', host: url);

@@ -1,12 +1,12 @@
-import 'package:exg/Ui/home/view/home_view.dart';
 import 'package:exg/global/helper/custom_sized_box.dart';
 import 'package:exg/global/utils/app_colors.dart';
 import 'package:exg/global/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../drawer/view/drawer_view.dart';
-import 'login_screen.dart';
+import 'create_login_screen.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -15,9 +15,9 @@ class LoginView extends StatefulWidget {
   State<LoginView> createState() => _LoginViewState();
 }
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _LoginViewState extends State<LoginView> {
+   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
           )
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,13 +73,36 @@ class _LoginViewState extends State<LoginView> {
             ),
             CustomSizeBox(30.h),
             text("Log in", onTap: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeView()),
-                  (route) => false);
+                Navigator.push(
+                              context,
+                              PageTransition(
+                                childCurrent: widget,
+                                type: PageTransitionType.rightToLeft,
+                                // alignment: Alignment.center,
+                                duration: const Duration(milliseconds: 200),
+                                reverseDuration:
+                                    const Duration(milliseconds: 200),
+                                child:CreateLoginScreen(screenType: "Log in",),
+                              ),
+                            );
+             
             }),
             CustomSizeBox(10.h),
-            text("Sign Up", onTap: () {}),
+            text("Sign Up", onTap: () {
+                Navigator.push(
+                              context,
+                              PageTransition(
+                                childCurrent: widget,
+                                type: PageTransitionType.rightToLeft,
+                                // alignment: Alignment.center,
+                                duration: const Duration(milliseconds: 200),
+                                reverseDuration:
+                                    const Duration(milliseconds: 200),
+                                child:CreateLoginScreen(screenType: "Sign Up",)
+                              ),
+                            );
+              
+            }),
           ],
         ),
       ),
