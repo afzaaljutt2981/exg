@@ -119,7 +119,7 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                                           lessonText: 'Atrial Arrhythmias',
                                           url: videoLinks,
                                         )));
-                          },
+                          },    
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
