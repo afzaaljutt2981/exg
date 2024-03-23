@@ -113,6 +113,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                         "Lesson 1.",
                         "Cardiac Axis",
                         "Cardiac axis is the general direction of electrical activity within the heart"),
+                        
                     GestureDetector(
                       onTap: () {
                         var videoList = [];
@@ -143,7 +144,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                                 fontWeight: FontWeight.normal),
                           ),
                           Text(
-                            'myocardial infarctions',
+                            'Myocardial Infarctions',
                             style: AppTextStyle.markerFont(
                                 color: AppColors.redColor,
                                 fontSize: 12.sp,
