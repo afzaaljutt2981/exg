@@ -64,7 +64,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomeView()),
+                              builder: (context) => const HomeView(showUSerGuide: false,)),
                           (route) => false);
                     },
                     child: Text(

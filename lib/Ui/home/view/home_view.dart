@@ -9,8 +9,8 @@ import '../../../global/utils/app_text_styles.dart';
 import '../../drawer/view/drawer_view.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
-
+   const HomeView({ required this.showUSerGuide, super.key});
+ final bool showUSerGuide;
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -25,7 +25,11 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 1), () {
-      _showTutorialCoachmark();
+     
+     
+    if (widget.showUSerGuide) {
+        _showTutorialCoachmark();
+    }
       // if (preferences.get('userGuide') == null) {
       //   if (preferences.get('userGuide') != 'true') {
       //     _showTutorialCoachmark();
