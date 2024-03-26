@@ -160,13 +160,11 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            var videoLinks = [];
+                              var videoLinks = [];
                             videoLinks.add(
-                                'https://video.wixstatic.com/video/c851b6_2f3a4687669442e89665e01ff5f93a37/1080p/mp4/file.mp4');
+                                'https://video.wixstatic.com/video/c851b6_4dbe37c07e474d5088d7f4c2e15c89c1/1080p/mp4/file.mp4');
                             videoLinks.add(
-                                'https://video.wixstatic.com/video/c851b6_dac5898a60564097be7f9bcddf8bd8c5/1080p/mp4/file.mp4');
-                            videoLinks.add(
-                                'https://video.wixstatic.com/video/c851b6_8e9f461c97d3482baecf2ccf3d0926db/1080p/mp4/file.mp4');
+                                'https://video.wixstatic.com/video/c851b6_35f7316c74a24f3f9f0d127b89bcfff6/1080p/mp4/file.mp4');
                             var texts = [];
                             texts.add('Broad Complex Tachycardias');
                             texts.add('Diagnosing Ventricular Tachycardia');
@@ -334,12 +332,13 @@ class _AdvanceScreenState extends State<AdvanceScreen> {
       String subHeading, String detail) {
     return GestureDetector(
       onTap: () {
-        String
+       String
             url = // videoNumber == 1 ? "https://video.wixstatic.com/video/c851b6_2f3a4687669442e89665e01ff5f93a37/1080p/mp4/file.mp4 " :
-            videoNumber == 2
-                ? "https://video.wixstatic.com/video/c851b6_4dbe37c07e474d5088d7f4c2e15c89c1/1080p/mp4/file.mp4"
-                : videoNumber == 3
-                    ? "https://video.wixstatic.com/video/c851b6_a38e9b1fb36f45b6ace280b63c2999d7/1080p/mp4/file.mp4"
+            // videoNumber == 2
+            //     ? "https://video.wixstatic.com/video/c851b6_4dbe37c07e474d5088d7f4c2e15c89c1/1080p/mp4/file.mp4"
+            //     : 
+                videoNumber == 3
+                    ?"https://video.wixstatic.com/video/c851b6_a38e9b1fb36f45b6ace280b63c2999d7/1080p/mp4/file.mp4"
                     : videoNumber == 4
                         ? "https://video.wixstatic.com/video/c851b6_9efd381cd6764604a8118c55ded975ac/1080p/mp4/file.mp4"
                         : '';

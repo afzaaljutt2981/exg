@@ -128,7 +128,7 @@ class _IntermediateScreenState extends State<IntermediateScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => FourVideoPlayScreen(
-                                      lessonText: 'myocardial infarctions',
+                                      lessonText: 'Myocardial Infarctions',
                                       url: videoList,
                                     )));
                       },
