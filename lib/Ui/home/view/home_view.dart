@@ -25,11 +25,12 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 1), () {
-      if (preferences.get('userGuide') == null) {
-        if (preferences.get('userGuide') != 'true') {
-          _showTutorialCoachmark();
-        }
-      }
+      _showTutorialCoachmark();
+      // if (preferences.get('userGuide') == null) {
+      //   if (preferences.get('userGuide') != 'true') {
+      //     _showTutorialCoachmark();
+      //   }
+      // }
     });
     super.initState();
   }
@@ -43,7 +44,6 @@ class _HomeViewState extends State<HomeView> {
       colorShadow: const Color(0xFF36454F),
       alignSkip: Alignment.topRight,
       onFinish: () {
-      
         preferences.put(
           'userGuide',
           'true',
@@ -62,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
             align: ContentAlign.bottom,
             builder: (context, controller) {
               return CoachmarkDesc(
-                text: "Type here to start learning",
+                text: "Tap here to start learning",
                 onNext: () {
                   controller.next();
                 },
@@ -180,11 +180,7 @@ class CoachmarkDesc extends StatefulWidget {
   State<CoachmarkDesc> createState() => _CoachmarkDescState();
 }
 
-class _CoachmarkDescState extends State<CoachmarkDesc>
-   {
- 
-
-
+class _CoachmarkDescState extends State<CoachmarkDesc> {
   @override
   Widget build(BuildContext context) {
     return Container(
