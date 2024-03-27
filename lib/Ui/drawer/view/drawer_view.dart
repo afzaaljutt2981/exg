@@ -69,7 +69,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomeView()),
+                              builder: (context) => const HomeView(showUSerGuide: false,)),
                           (route) => false);
                     },
                     child: Text(
@@ -97,7 +97,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginView()),
+                          builder: (context) => const LoginView(showUSerGuide: false,)),
                     );
                   } else if (preferences.get('startup_session') != null &&
                       preferences.get('countLength') != null &&
@@ -124,7 +124,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginView()),
+                          builder: (context) => const LoginView(showUSerGuide: false,)),
                     );
                   } else if (preferences.get('startup_session') != null &&
                       preferences.get('countLength') != null &&
@@ -151,7 +151,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginView()),
+                          builder: (context) => const LoginView(showUSerGuide: false,)),
                     );
                   } else if (preferences.get('startup_session') != null &&
                       preferences.get('countLength') != null &&
@@ -178,7 +178,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginView()),
+                          builder: (context) => const LoginView(showUSerGuide: false,)),
                     );
                   } else if (preferences.get('startup_session') != null &&
                       preferences.get('countLength') != null &&

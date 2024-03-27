@@ -68,7 +68,7 @@ class AuthProvider extends ChangeNotifier {
         // ignore: use_build_context_synchronously
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const HomeView()),
+            MaterialPageRoute(builder: (context) => const HomeView(showUSerGuide: true,)),
             (route) => false);
 
         setLoginProcess(false);

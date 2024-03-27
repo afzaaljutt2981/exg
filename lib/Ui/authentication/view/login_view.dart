@@ -4,19 +4,84 @@ import 'package:exg/global/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '../../drawer/view/drawer_view.dart';
 import 'create_login_screen.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({super.key});
-
+  const LoginView({required this.showUSerGuide,  super.key});
+final bool showUSerGuide;
   @override
   State<LoginView> createState() => _LoginViewState();
 }
 
 
 class _LoginViewState extends State<LoginView> {
+   TutorialCoachMark? tutorialCoachMark;
+  List<TargetFocus> targets = [];
+
+  GlobalKey menuKey = GlobalKey();
+
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 1), () {
+     
+     
+    if (widget.showUSerGuide) {
+        _showTutorialCoachmark();
+    }
+      // if (preferences.get('userGuide') == null) {
+      //   if (preferences.get('userGuide') != 'true') {
+      //     _showTutorialCoachmark();
+      //   }
+      // }
+    });
+    super.initState();
+  }
+
+  void _showTutorialCoachmark() {
+    _initTarget();
+    tutorialCoachMark = TutorialCoachMark(
+      targets: targets,
+      hideSkip: true,
+      pulseEnable: false,
+      colorShadow: const Color(0xFF36454F),
+      alignSkip: Alignment.topRight,
+      // onFinish: () {
+      //   preferences.put(
+      //     'userGuide',
+      //     'true',
+      //   );
+      // },
+    )..show(context: context);
+  }
+
+  void _initTarget() {
+    targets = [
+      TargetFocus(
+        identify: "menu-key",
+        keyTarget: menuKey,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return CoachmarkDesc(
+                text: "Tap here to start learning",
+                onNext: () {
+                  controller.next();
+                },
+                onSkip: () {
+                  controller.skip();
+                },
+              );
+            },
+          )
+        ],
+      ),
+    ];
+  }
+
    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -32,6 +97,7 @@ class _LoginViewState extends State<LoginView> {
             child: Padding(
               padding: EdgeInsets.only(right: 23.sp),
               child: Icon(
+                key: menuKey,
                 Icons.menu,
                 color: AppColors.blueColor,
                 size: 40.sp,
@@ -125,6 +191,41 @@ class _LoginViewState extends State<LoginView> {
               color: AppColors.blueColor),
         ),
       ),
+    );
+  }
+}
+
+
+class CoachmarkDesc extends StatefulWidget {
+  const CoachmarkDesc({
+    super.key,
+    required this.text,
+    this.skip = "Skip",
+    this.next = "Finish",
+    this.onSkip,
+    this.onNext,
+  });
+
+  final String text;
+  final String skip;
+  final String next;
+  final void Function()? onSkip;
+  final void Function()? onNext;
+
+  @override
+  State<CoachmarkDesc> createState() => _CoachmarkDescState();
+}
+
+class _CoachmarkDescState extends State<CoachmarkDesc> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 5.w, right: 1.w),
+      child: Text(widget.text,
+          style: AppTextStyle.luloClean(
+              fontSize: 13.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.white)),
     );
   }
 }
