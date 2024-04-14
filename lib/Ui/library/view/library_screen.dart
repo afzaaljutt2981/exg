@@ -22,7 +22,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
 
   List textList = [
     'Atrial Fibrillation With Left Bundle Branch Block',
-    'Elecrtrical alternans',
+    'Electrical alternans',
     'Green lead fallen off',
     'Hyperkalaemia 1',
     'Hyperkalaemia 2',
